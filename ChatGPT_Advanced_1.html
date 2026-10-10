@@ -1576,10 +1576,13 @@
                 poster: '',
                 type: key === 'login' ? 'image' : 'video'
             }]));
+            
             media.login.steps = [
                 ['assets/week2/login-preview.png', '① ChatGPT 화면 오른쪽 상단 · 로그인'],
                 ['assets/week2/google-preview.png', '② 로그인 창 · Google 계정으로 계속하기']
             ];
+
+            media.send.video = 'assets/week2/send.mp4';
 
             function pendingFrame(container, h, message) {
                 container.replaceChildren();
