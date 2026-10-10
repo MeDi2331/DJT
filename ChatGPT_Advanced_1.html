@@ -1272,6 +1272,18 @@
                 background: #F7F7F5
             }
 
+            .hover-step + .hover-step {
+                margin-top: 12px;
+            }
+
+            .hover-step small {
+                display: block;
+                margin-bottom: 6px;
+                color: var(--ink);
+                font-weight: 700;
+                line-height: 1.5;
+            }
+
             .tooltip img {
                 display: block;
                 width: 100%;
@@ -1373,7 +1385,7 @@
                                 <h4>사용 순서</h4>
                                 <ol class="steps">
                                     <li><a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">ChatGPT <span aria-hidden="true">🔗</span></span></a> 또는 <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>에 접속합니다.</li>
-                                    <li><span class="hint" data-help="login" role="button" tabindex="0">로그인 버튼 → Google로 <span class="icon-tail">계속<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 선택해 Google 계정으로 로그인합니다.</li>
+                                    <li><span class="hint" data-help="login" role="button" tabindex="0">화면 오른쪽 상단의 로그인 버튼 → Google로 <span class="icon-tail">계속<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 선택해 Google 계정으로 로그인합니다.</li>
                                     <li><span class="hint" data-help="send" role="button" tabindex="0">화면 아래쪽 입력창에 질문을 작성하고 전송 <span class="icon-tail">버튼<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 누릅니다.</li>
                                 </ol>
                                 <h4>처음 해볼 질문</h4>
@@ -1475,11 +1487,11 @@
         <script>
             const $ = id => document.getElementById(id);
             const help = {
-                login: ['2-01', 'Google 계정으로 로그인', '로그인 버튼과 Google로 계속 선택 화면', 'ChatGPT와 Gemini 각각의 로그인 화면을 준비합니다. 처음 가입한 로그인 방식을 확인하고 사용할 계정을 선택합니다.'],
+                login: ['2-01', 'Google 계정으로 로그인', '로그인 버튼과 Google로 계속 선택 화면', 'ChatGPT 화면 오른쪽 상단의 로그인 버튼을 누른 뒤, 로그인 창에서 Google 계정으로 계속하기를 선택합니다. 사용할 Google 계정을 확인합니다.'],
                 send: ['2-02', '질문 입력과 전송', '입력창과 전송 버튼', '질문을 입력한 뒤 전송 버튼을 누릅니다. 입력창과 버튼의 위치를 주변 화면과 함께 확인합니다.'],
                 plus: ['2-03', 'ChatGPT ＋ 버튼', '입력창 왼쪽 ＋ 버튼과 주변 영역', 'ChatGPT 입력창 왼쪽의 ＋ 버튼을 눌러 기능 선택 메뉴를 엽니다.'],
                 research: ['2-04', '심층 리서치 선택', '＋ 버튼을 눌러 펼친 메뉴', '펼쳐진 메뉴에서 심층 리서치를 선택합니다. 선택 상태를 확인한 뒤 주제와 조사 범위를 입력합니다.'],
-                source: ['2-05', '보고서 출처 확인', '완성된 보고서의 인용·출처 표시', '보고서의 출처 표시를 선택하고 연결된 원문을 확인합니다. 결론을 뒷받침하는지와 자료 날짜를 살펴봅니다.'],
+                source: ['2-05', '보고서 출처 확인', '보고서 상단 버튼과 소스·활동 탭', '보고서 오른쪽 상단의 출처 패널 버튼을 누릅니다. 소스 탭에서는 출처를, 활동 탭에서는 조사 과정을 확인합니다. 이 캡처는 출처가 없는 상태입니다. 출처가 표시된 경우 연결된 원문과 자료 날짜를 확인합니다.'],
                 canvas: ['2-06', 'Gemini Canvas 선택', '도구 메뉴와 Canvas 항목', 'Gemini 입력창 주변의 도구 메뉴에서 Canvas를 선택합니다. 실제 계정에 표시되는 메뉴 이름과 위치를 캡처로 안내합니다.'],
                 edit: ['2-07', 'Canvas 결과 확인과 수정', 'Canvas 결과물과 수정 요청 입력창', '생성된 발표자료의 내용과 구성을 확인합니다. 같은 대화에서 분량·표현·구성의 수정을 요청합니다.'],
                 export: ['2-08', '발표자료 내보내기', '내보내기 메뉴와 저장·전환 옵션', '내보내기 메뉴를 열고 실제 제공되는 저장 또는 전환 옵션을 선택합니다. 계정에서 가능한 방식을 확인합니다.']
@@ -1555,16 +1567,19 @@
             }
             const hover = matchMedia('(hover:hover) and (pointer:fine)');
 
-            // Set paths after adding the image and MP4 files to the repository.
-            // Example: preview: 'assets/week2/2-03-preview.jpg',
-            // video: 'assets/week2/2-03.mp4', poster: 'assets/week2/2-03-poster.jpg'.
+            // Hover previews are separate from full images and MP4 clips.
+            // Add an MP4 path to video when a recording is ready.
             const media = Object.fromEntries(Object.keys(help).map(key => [key, {
-                preview: '',
-                image: '',
+                preview: `assets/week2/${key}-preview.png`,
+                image: key === 'login' ? 'assets/week2/login-full.png' : '',
                 video: '',
                 poster: '',
                 type: key === 'login' ? 'image' : 'video'
             }]));
+            media.login.steps = [
+                ['assets/week2/login-preview.png', '① ChatGPT 화면 오른쪽 상단 · 로그인'],
+                ['assets/week2/google-preview.png', '② 로그인 창 · Google 계정으로 계속하기']
+            ];
 
             function pendingFrame(container, h, message) {
                 container.replaceChildren();
@@ -1590,10 +1605,25 @@
                 if (!hover.matches || $('dialog').open) return;
                 const h = help[b.dataset.help];
                 const item = media[b.dataset.help];
-                if (item.preview) loadImage($('tooltip'), item.preview, h);
-                else pendingFrame($('tooltip'), h, '미리보기 이미지 준비 중');
+                if (item.steps) {
+                    $('tooltip').replaceChildren();
+                    item.steps.forEach(([path, label]) => {
+                        const step = document.createElement('div');
+                        step.className = 'hover-step';
+                        const description = document.createElement('small');
+                        description.textContent = label;
+                        const frame = document.createElement('div');
+                        loadImage(frame, path, h);
+                        step.append(description, frame);
+                        $('tooltip').append(step);
+                    });
+                } else if (item.preview) {
+                    loadImage($('tooltip'), item.preview, h);
+                } else {
+                    pendingFrame($('tooltip'), h, '미리보기 이미지 준비 중');
+                }
                 const caption = document.createElement('small');
-                caption.textContent = item.type === 'image' ? '클릭하면 큰 이미지와 설명' : '클릭하면 사용 방법 영상과 설명';
+                caption.textContent = item.type === 'image' ? '클릭하면 큰 이미지와 설명' : item.video ? '클릭하면 사용 방법 영상과 설명' : '클릭하면 설명 · 영상 준비 중';
                 $('tooltip').append(caption);
                 $('tooltip').hidden = false;
                 const r = b.getBoundingClientRect(),
