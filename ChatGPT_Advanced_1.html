@@ -1358,7 +1358,7 @@
                     <div>
                         <span class="badge" id="badge">WEEK 02</span>
                         <h2 id="title">생성형 AI 이해와 질문하는 방법</h2>
-                        <p class="description" id="description">생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다. ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.</p>
+                        <p class="description" id="description">생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다.<br/>ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.</p>
                     </div>
                     <div class="counter" id="counter">
                         02/16
@@ -1369,7 +1369,7 @@
                         <div id="week2">
                             <article class="card">
                                 <h3><span class="num">01</span>생성형 AI 알아보기</h3>
-                                <p><strong>생성형 AI</strong>는 사용자의 요청에 따라 글·이미지·표·코드 등의 결과물을 만드는 AI입니다. <br/>ChatGPT와 Gemini로 질문하고 내용을 작성·정리할 수 있습니다.</p>
+                                <p><strong>생성형 AI</strong>는 사용자의 요청에 따라 글·이미지·표·코드 등의 결과물을 만드는 AI입니다. <br/><strong>ChatGPT</strong>와 <strong>Gemini</strong>로 질문하고 내용을 작성·정리할 수 있습니다.</p>
                                 <h4>사용 순서</h4>
                                 <ol class="steps">
                                     <li><a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">ChatGPT <span aria-hidden="true">🔗</span></span></a> 또는 <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>에 접속합니다.</li>
@@ -1546,7 +1546,7 @@
                 $('badge').textContent = n ? `WEEK ${String(n).padStart(2,'0')}` : '전체 안내';
                 $('counter').textContent = n ? `${String(n).padStart(2,'0')}/16` : '16 W';
                 $('title').textContent = n === 2 ? '생성형 AI 이해와 질문하는 방법' : n === 0 ? '학습을 시작하기 전에' : n === 1 ? '오리엔테이션과 전체 과정 안내' : n === 16 ? '전체 과정 돌아보기와 총복습' : `${n}주차 학습 내용`;
-                $('description').textContent = n === 2 ? '생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다. ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.' : n === 0 ? '위 경로에서 전체 흐름을 확인하고 2주차를 선택해 학습 내용과 화면 안내를 살펴보세요.' : n === 1 ? '추후 전체 수업 계획서와 1~16주차 로드맵을 배치합니다.' : n === 16 ? '주차별 요약과 자료를 다시 확인하며 전체 과정을 복습합니다.' : '이 시안에서는 2주차 내용만 적용했습니다.';
+                $('description').textContent = n === 2 ? '생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다.<br/>' + 'ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.' : n === 0 ? '위 경로에서 전체 흐름을 확인하고 2주차를 선택해 학습 내용과 화면 안내를 살펴보세요.' : n === 1 ? '추후 전체 수업 계획서와 1~16주차 로드맵을 배치합니다.' : n === 16 ? '주차별 요약과 자료를 다시 확인하며 전체 과정을 복습합니다.' : '이 시안에서는 2주차 내용만 적용했습니다.';
                 $('other').innerHTML = '<article class="card"><h3>' + (n === 0 ? '사용 방법' : '안내') + '</h3><p>' + (n === 0 ? '주차를 선택하면 아래 내용이 바뀝니다. 2주차의 점선 밑줄을 클릭하거나 터치해 화면 안내를 열어보세요.' : n === 16 ? '로드맵의 각 주차를 선택해 배운 개념과 AI 활용 방법을 되짚어봅니다.' : '상세 내용은 추후 추가합니다.') + '</p></article>';
                 $('prev').disabled = n <= 1;
                 $('next').disabled = n === 16;
