@@ -1328,15 +1328,59 @@
                     color: black
                 }
             }
+            .data-notice {
+                flex: 1 1 360px;
+                margin: 0;
+                color: #555;
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .layout-control {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-left: auto;
+                white-space: nowrap;
+                font-size: 14px;
+            }
+
+            .layout-control select {
+                min-width: 110px;
+                min-height: 44px;
+                padding: 7px 12px;
+                border: 1px solid #ced9e3;
+                border-radius: 10px;
+                background: white;
+                color: var(--ink);
+                font: inherit;
+                cursor: pointer;
+            }
+
+            .layout-control select:focus-visible {
+                outline: 3px solid #e59834;
+                outline-offset: 3px;
+            }
+
+            @media (max-width: 500px) {
+                .data-notice {
+                    flex-basis: 100%;
+                }
+            }
         </style>
     </head>
     <body>
         <div class="toolbar">
-            <span>레이아웃 미리보기</span>
-            <button aria-pressed="true" data-mode="auto">자동</button>
-            <button aria-pressed="false" data-mode="phone">스마트폰</button>
-            <button aria-pressed="false" data-mode="tablet">태블릿</button>
-            <button aria-pressed="false" data-mode="pc">PC</button>
+            <p class="data-notice">모바일 데이터로 이미지·영상을 불러오면 요금제에 따라 데이터 비용이 발생할 수 있습니다.</p>
+            <div class="layout-control">
+                <label for="layoutMode">레이아웃:</label>
+                <select id="layoutMode" aria-label="레이아웃 미리보기 선택">
+                    <option value="auto" selected>자동</option>
+                    <option value="phone">스마트폰</option>
+                    <option value="tablet">태블릿</option>
+                    <option value="pc">PC</option>
+                </select>
+            </div>
         </div>
         <main class="shell" data-mode="auto" id="shell">
             <header>
@@ -1715,13 +1759,10 @@
             $('reset').onclick = () => render(0);
             $('prev').onclick = () => render(Math.max(1, selected - 1));
             $('next').onclick = () => render(Math.min(16, selected + 1));
-            document.querySelectorAll('[data-mode]').forEach(b => {
-                if (b.tagName !== 'BUTTON') return;
-                b.onclick = () => {
-                    document.querySelectorAll('.toolbar button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-                    $('shell').dataset.mode = b.dataset.mode;
-                    layout()
-                }
+            $('layoutMode').addEventListener('change', event => {
+                $('shell').dataset.mode = event.target.value;
+                hide();
+                layout();
             });
             new ResizeObserver(layout).observe($('shell'));
             render(2);
