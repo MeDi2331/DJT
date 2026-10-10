@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>반응형 학습 로드맵</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue: #4865e9;
+        --ink: #26354c;
+        --muted: #778397;
+        --line: #e2e7f1;
+      }
+
+      body {
+        margin: 0;
+        background: #f2f5fa;
+        color: var(--ink);
+        font-family: Arial, "Malgun Gothic", sans-serif;
+      }
+
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:focus-visible {
+        outline: 3px solid #9aacff;
+        outline-offset: 4px;
+      }
+
+      .toolbar {
+        max-width: 1200px;
+        margin: 24px auto 0;
+        padding: 0 20px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .toolbar span {
+        font-size: 12px;
+        color: var(--muted);
+        margin-right: 6px;
+      }
+
+      .mode {
+        border: 1px solid var(--line);
+        background: white;
+        padding: 9px 13px;
+        border-radius: 9px;
+        font-size: 12px;
+        color: var(--ink);
+      }
+
+      .mode[aria-pressed="true"] {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: white;
+      }
+
+      .shell {
+        width: calc(100% - 40px);
+        max-width: 1160px;
+        margin: 24px auto 40px;
+        transition: max-width 0.2s;
+      }
+
+      .shell[data-mode="phone"] {
+        max-width: 390px;
+      }
+
+      .shell[data-mode="tablet"] {
+        max-width: 820px;
+      }
+
+      .shell[data-mode="pc"] {
+        max-width: 1160px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--blue);
+      }
+
+      h1 {
+        font-size: 27px;
+        letter-spacing: -1px;
+        margin: 10px 0;
+      }
+
+      .sub {
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .reset {
+        border: 1px solid var(--line);
+        background: white;
+        border-radius: 10px;
+        padding: 10px 13px;
+        color: var(--ink);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .index,
+      .content {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+      }
+
+      .index {
+        padding: 23px 20px 17px;
+      }
+
+      .index-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .index-head strong {
+        font-size: 14px;
+      }
+
+      .layout-label {
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .map {
+        position: relative;
+        margin-top: 24px;
+      }
+
+      svg.path {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .path path {
+        fill: none;
+        stroke: #dce3f1;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .path .direction {
+        fill: #b8c5e2;
+        stroke: none;
+      }
+
+      .nodes {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+        grid-template-rows: repeat(var(--rows), 94px);
+      }
+
+      .week {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 0 0;
+        border: 0;
+        background: none;
+        color: var(--muted);
+        min-width: 0;
+      }
+
+      .dot {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        background: white;
+        border: 2px solid #d2daea;
+        border-radius: 50%;
+        font-size: 12px;
+        font-weight: bold;
+        transition: 0.15s;
+      }
+
+      .label {
+        font-size: 10px;
+        margin-top: 10px;
+        white-space: nowrap;
+      }
+
+      .week:hover .dot,
+      .week:focus-visible .dot {
+        border-color: var(--blue);
+        color: var(--blue);
+        transform: translateY(-2px);
+      }
+
+      .week[aria-pressed="true"] .dot {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: white;
+        box-shadow: 0 0 0 5px #eef1ff;
+      }
+
+      .week[aria-pressed="true"] .label {
+        color: var(--blue);
+        font-weight: bold;
+      }
+
+      .week:first-child .dot,
+      .week:last-child .dot {
+        border-color: #91a5ee;
+      }
+
+      .tip {
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        bottom: 90px;
+        width: 155px;
+        transform: translateX(-50%);
+        background: var(--ink);
+        color: white;
+        padding: 11px;
+        border-radius: 10px;
+        font-size: 11px;
+        line-height: 1.6;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        box-shadow: 0 8px 24px #26354c25;
+      }
+
+      .tip strong {
+        display: block;
+        color: #becaff;
+        margin-bottom: 3px;
+      }
+
+      @media (hover: hover) {
+        .week:hover .tip {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      .week:focus-visible .tip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .week.edge-left .tip {
+        left: 0;
+        transform: none;
+      }
+
+      .week.edge-right .tip {
+        left: auto;
+        right: 0;
+        transform: none;
+      }
+
+      .legend {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        border-top: 1px solid #eff2f7;
+        padding-top: 13px;
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .legend b {
+        color: var(--blue);
+      }
+
+      .content {
+        margin-top: 20px;
+        padding: 29px;
+      }
+
+      .content-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid #edf0f6;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #eef1ff;
+        color: var(--blue);
+        padding: 6px 9px;
+        border-radius: 7px;
+        font-size: 10px;
+        font-weight: bold;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin: 13px 0 9px;
+        letter-spacing: -0.7px;
+      }
+
+      .description {
+        font-size: 13px;
+        line-height: 1.9;
+        color: var(--muted);
+        margin: 0;
+        max-width: 670px;
+      }
+
+      .counter {
+        font-size: 34px;
+        font-weight: bold;
+        color: #cbd3e2;
+        white-space: nowrap;
+        letter-spacing: -2px;
+      }
+
+      .body-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 24px;
+        margin-top: 23px;
+      }
+
+      h3 {
+        font-size: 13px;
+        margin: 0 0 13px;
+      }
+
+      .cards {
+        display: grid;
+        gap: 10px;
+      }
+
+      .card {
+        display: flex;
+        gap: 12px;
+        padding: 15px;
+        border: 1px solid #e8edf5;
+        border-radius: 12px;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 27px;
+        height: 27px;
+        flex-shrink: 0;
+        background: #f0f3fb;
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: bold;
+        border-radius: 7px;
+      }
+
+      .card strong {
+        font-size: 12px;
+      }
+
+      .card p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 6px 0 0;
+        line-height: 1.8;
+      }
+
+      .resource {
+        background: #f6f8fc;
+        padding: 19px;
+        border-radius: 13px;
+      }
+
+      .resource button {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        padding: 13px 12px;
+        border: 1px solid #e5eaf3;
+        background: white;
+        border-radius: 9px;
+        margin: 9px 0;
+        color: var(--ink);
+        font-size: 12px;
+        text-align: left;
+      }
+
+      .resource button:hover {
+        border-color: var(--blue);
+      }
+
+      .resource small {
+        font-size: 10px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .status {
+        font-size: 11px;
+        color: var(--blue);
+        line-height: 1.7;
+        min-height: 18px;
+        margin-top: 12px;
+      }
+
+      .note {
+        border-left: 3px solid #b4c2fc;
+        padding-left: 12px;
+        margin-top: 16px;
+        font-size: 11px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        border-top: 1px solid #edf0f6;
+        margin-top: 24px;
+        padding-top: 17px;
+      }
+
+      .footer small {
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        gap: 7px;
+      }
+
+      .nav button {
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        background: white;
+        border-radius: 9px;
+        color: var(--ink);
+        font-size: 11px;
+        white-space: nowrap;
+      }
+
+      .nav button:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+
+      .shell.compact header {
+        flex-wrap: wrap;
+      }
+
+      .shell.compact h1 {
+        font-size: 23px;
+      }
+
+      .shell.compact .content {
+        padding: 21px 17px;
+      }
+
+      .shell.compact .body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shell.compact .counter {
+        font-size: 27px;
+      }
+
+      .shell.compact h2 {
+        font-size: 21px;
+      }
+
+      .shell.compact .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar" aria-label="레이아웃 비교">
+      <span>레이아웃 미리보기</span>
+      <button class="mode" data-mode="auto" aria-pressed="true">자동</button>
+      <button class="mode" data-mode="phone" aria-pressed="false">스마트폰</button>
+      <button class="mode" data-mode="tablet" aria-pressed="false">태블릿</button>
+      <button class="mode" data-mode="pc" aria-pressed="false">PC</button>
+    </div>
+
+    <main class="shell" id="shell" data-mode="auto">
+      <header>
+        <div>
+          <div class="eyebrow">LEARNING ROADMAP</div>
+          <h1>16주, 하나의 학습 여정</h1>
+          <p class="sub">시작부터 끝까지 살펴보고<br />궁금한 주차를 선택하세요.</p>
+        </div>
+        <button class="reset" id="reset">전체 안내</button>
+      </header>
+
+      <section class="index" aria-label="주차별 학습 흐름">
+        <div class="index-head">
+          <strong>주차별 학습 흐름</strong>
+          <span class="layout-label" id="layoutLabel"></span>
+        </div>
+        <div class="map" id="map">
+          <svg class="path" id="path" aria-hidden="true"></svg>
+          <div class="nodes" id="nodes"></div>
+        </div>
+        <div class="legend">
+          <span><b>01</b> 시작</span>
+          <span><b>16</b> 도착</span>
+          <span>선을 따라 주차가 이어집니다</span>
+        </div>
+      </section>
+
+      <section class="content" aria-label="선택한 주차의 내용">
+        <div class="content-head">
+          <div>
+            <span class="badge" id="badge"></span>
+            <h2 id="title"></h2>
+            <p class="description" id="description"></p>
+          </div>
+          <div class="counter" id="counter"></div>
+        </div>
+
+        <div class="body-grid">
+          <div>
+            <h3 id="sectionTitle"></h3>
+            <div class="cards" id="cards"></div>
+            <div class="note" id="note"></div>
+          </div>
+
+          <aside class="resource">
+            <h3 id="resourceTitle"></h3>
+            <div id="links"></div>
+            <small>내용과 링크는 레이아웃 확인용 예시입니다.</small>
+            <div class="status" id="status" role="status"></div>
+          </aside>
+        </div>
+
+        <div class="footer">
+          <small id="footerText"></small>
+          <div class="nav">
+            <button id="prev">← 이전 주차</button>
+            <button id="next">다음 주차 →</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const phases = [
+        ["기초 이해", "기본 개념과 준비사항을 알아봅니다."],
+        ["사용 연습", "기능을 직접 사용하며 익숙해집니다."],
+        ["응용과 확장", "배운 내용을 새로운 상황에 적용합니다."],
+        ["완성과 정리", "결과물을 완성하고 과정을 돌아봅니다."]
+      ];
+
+      let selected = 0;
+      let cols = 0;
+      let layoutFrame;
+      const buttons = [];
+
+      for (let n = 1; n <= 16; n++) {
+        const phase = phases[Math.floor((n - 1) / 4)];
+        const b = document.createElement("button");
+        b.className = "week";
+        b.setAttribute("aria-label", `${n}주차 · ${phase[0]} · 상세 보기`);
+        b.setAttribute("aria-pressed", "false");
+        b.innerHTML = `<span class="tip"><strong>${n}주차 · ${phase[0]}</strong>${phase[1]}</span><span class="dot">${String(n).padStart(2, "0")}</span><span class="label">${n}주차</span>`;
+        b.onclick = () => render(n);
+        buttons.push(b);
+        $("nodes").appendChild(b);
+      }
+
+      function layout() {
+        const width = $("shell").getBoundingClientRect().width;
+        const newCols = width < 600 ? 4 : width < 1000 ? 8 : 16;
+        $("shell").classList.toggle("compact", width < 600);
+
+        if (newCols !== cols) {
+          cols = newCols;
+          $("nodes").style.setProperty("--cols", cols);
+          $("nodes").style.setProperty("--rows", 16 / cols);
+
+          buttons.forEach((b, i) => {
+            const row = Math.floor(i / cols);
+            const offset = i % cols;
+            const col = row % 2 === 0 ? offset : cols - 1 - offset;
+            b.style.gridRow = row + 1;
+            b.style.gridColumn = col + 1;
+            b.classList.toggle("edge-left", col === 0);
+            b.classList.toggle("edge-right", col === cols - 1);
+          });
+        }
+
+        $("layoutLabel").textContent = `${cols}개 × ${16 / cols}줄`;
+        drawPath();
+      }
+
+      function drawPath() {
+        const mapRect = $("map").getBoundingClientRect();
+        const points = buttons.map((b) => {
+          const r = b.querySelector(".dot").getBoundingClientRect();
+          return {
+            x: r.left - mapRect.left + r.width / 2,
+            y: r.top - mapRect.top + r.height / 2
+          };
+        });
+
+        const svg = $("path");
+        svg.setAttribute("viewBox", `0 0 ${mapRect.width} ${mapRect.height}`);
+
+        let d = `M ${points[0].x} ${points[0].y}`;
+        let arrows = "";
+
+        for (let i = 1; i < points.length; i++) {
+          const a = points[i - 1];
+          const b = points[i];
+
+          if (Math.abs(a.y - b.y) < 1) {
+            d += ` L ${b.x} ${b.y}`;
+            const mid = (a.x + b.x) / 2;
+            const dir = b.x > a.x ? 1 : -1;
+            arrows += `<path class="direction" d="M ${mid - 3 * dir} ${a.y - 3} L ${mid + 3 * dir} ${a.y} L ${mid - 3 * dir} ${a.y + 3} Z"/>`;
+          } else {
+            const side = a.x > mapRect.width / 2 ? 1 : -1;
+            const bend = side > 0 ? mapRect.width - 2 : 2;
+            d += ` C ${bend} ${a.y}, ${bend} ${b.y}, ${b.x} ${b.y}`;
+          }
+        }
+
+        svg.innerHTML = `<path d="${d}"/>${arrows}`;
+      }
+
+      function cards(items) {
+        $("cards").innerHTML = items
+          .map(
+            (v, i) =>
+              `<article class="card"><span class="num">0${i + 1}</span><div><strong>${v[0]}</strong><p>${v[1]}</p></div></article>`
+          )
+          .join("");
+      }
+
+      function links(items) {
+        $("links").replaceChildren();
+        items.forEach((text) => {
+          const b = document.createElement("button");
+          b.innerHTML = `<span>${text}</span><span aria-hidden="true">↗</span>`;
+          b.onclick = () => {
+            $("status").textContent = `‘${text}’ 자료가 연결될 위치입니다.`;
+          };
+          $("links").appendChild(b);
+        });
+      }
+
+      function render(n) {
+        selected = n;
+        buttons.forEach((b, i) => b.setAttribute("aria-pressed", String(i + 1 === n)));
+        $("status").textContent = "";
+        $("prev").disabled = n <= 1;
+        $("next").disabled = n === 16;
+        $("next").textContent = n === 0 ? "1주차 보기 →" : "다음 주차 →";
+
+        if (!n) {
+          $("badge").textContent = "전체 안내";
+          $("title").textContent = "학습을 시작하기 전에";
+          $("description").textContent = "위쪽 경로에서 16주차 전체 흐름을 확인하세요. 주차를 선택하면 이 공간에 해당 주차의 내용이 한 페이지로 요약됩니다.";
+          $("counter").textContent = "16 W";
+          $("sectionTitle").textContent = "기본 안내";
+          cards([
+            ["전체 과정 살펴보기", "첫 주부터 마지막 주까지 하나의 선으로 연결됩니다. 화면이 좁아지면 경로가 굽어 여러 줄로 배치됩니다."],
+            ["학습 자료 준비하기", "공통 자료와 기초 내용, 필요한 링크를 확인하는 영역입니다."],
+            ["궁금한 주차 선택하기", "점에 마우스를 올리면 짧은 설명이 나타나고, 클릭하거나 터치하면 아래 상세 내용이 바뀝니다."]
+          ]);
+          $("note").textContent = "전체 안내 버튼을 누르면 언제든 기본 자료 화면으로 돌아옵니다.";
+          $("resourceTitle").textContent = "공통 자료 및 링크";
+          links(["전체 과정 안내", "기초 용어 모음", "수업 준비 체크리스트"]);
+          $("footerText").textContent = "전체 흐름 → 주차 선택 → 내용 확인";
+        } else {
+          const p = phases[Math.floor((n - 1) / 4)];
+          $("badge").textContent = `WEEK ${String(n).padStart(2, "0")} · ${p[0]}`;
+          $("title").textContent = `${n}주차 학습 내용`;
+          $("description").textContent = `${p[1]} 이곳에는 해당 주차의 학습 목표와 내용을 2~3문장으로 요약합니다.`;
+          $("counter").textContent = `${String(n).padStart(2, "0")}/16`;
+          $("sectionTitle").textContent = "이번 주 핵심 내용";
+          cards([
+            ["핵심 개념", "이번 주에 이해해야 할 주요 개념과 간단한 설명이 들어갑니다."],
+            ["실습과 활용", "직접 해보는 활동과 예시, 활동 순서가 배치됩니다."],
+            ["정리와 결과물", "학습을 마친 뒤 확인할 내용과 완성할 결과물이 들어갑니다."]
+          ]);
+          $("note").textContent = n === 16 ? "도착 · 완성한 결과물을 확인하고 전체 과정을 정리합니다." : `다음 연결 · ${n + 1}주차에 필요한 복습이나 준비사항을 안내합니다.`;
+          $("resourceTitle").textContent = `${n}주차 자료 및 링크`;
+          links([`${n}주차 요약 자료`, "실습 자료 및 예시", "참고 링크"]);
+          $("footerText").textContent = `현재 선택 · ${n}주차`;
+        }
+      }
+
+      $("reset").onclick = () => render(0);
+      $("prev").onclick = () => render(Math.max(1, selected - 1));
+      $("next").onclick = () => render(Math.min(16, selected + 1));
+
+      document.querySelectorAll(".mode").forEach((b) => {
+        b.onclick = () => {
+          document.querySelectorAll(".mode").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+          $("shell").dataset.mode = b.dataset.mode;
+          layout();
+        };
+      });
+
+      new ResizeObserver(() => {
+        cancelAnimationFrame(layoutFrame);
+        layoutFrame = requestAnimationFrame(layout);
+      }).observe($("shell"));
+
+      render(0);
+      layout();
+    </script>
+  </body>
+</html>
