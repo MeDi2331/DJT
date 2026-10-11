@@ -1714,6 +1714,32 @@
             #ai-overview .prompt-copy-feedback { font-size: 13px; }
             .content .prompt-heading > h3,
             .content .prompt-heading > h4 { min-width: 0; }
+
+            .week-switch {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                flex-shrink: 0;
+                align-self: flex-start;
+            }
+            .week-switch .counter { padding-top: 0; white-space: nowrap; }
+            .week-switch-arrow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                border: 0;
+                border-radius: 8px;
+                background: transparent;
+                color: #656565;
+            }
+            .week-switch-arrow:hover:not(:disabled) { background: #F7F7F5; color: #A12C40; }
+            .week-switch-arrow:disabled { opacity: .3; cursor: default; }
+            @media print {
+                .week-switch-arrow { display: none; }
+            }
         </style>
     </head>
     <body>
@@ -1763,8 +1789,14 @@
                         <h2 id="title">생성형 AI 이해와 질문하는 방법</h2>
                         <p class="description" id="description">생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다.<br/>ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.</p>
                     </div>
-                    <div class="counter" id="counter">
-                        02/16
+                    <div class="week-switch" role="group" aria-label="주차 이동">
+                        <button id="topPrev" class="week-switch-arrow" type="button" aria-label="이전 주차">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <div class="counter" id="counter">02/16</div>
+                        <button id="topNext" class="week-switch-arrow" type="button" aria-label="다음 주차">
+                            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
                     </div>
                 </div>
         <div id="ai-overview" hidden>
@@ -2474,7 +2506,12 @@
                     $('resourceLinks').append(link);
                 });
                 $('other').innerHTML = '<article class="card"><h3>' + (n === 0 ? '사용 방법' : '안내') + '</h3><p>' + (n === 0 ? '주차를 선택하면 아래 내용이 바뀝니다. 점선 밑줄을 클릭하거나 터치해 화면 안내를 열어보세요. 3~7주차의 캡처와 영상은 추후 추가합니다.' : n === 16 ? '로드맵의 각 주차를 선택해 배운 개념과 AI 활용 방법을 되짚어봅니다.' : '상세 내용은 추후 추가합니다.') + '</p></article>';
-                $('prev').disabled = n <= 1;
+                $('prev').disabled = n === 0;
+                $('topPrev').disabled = n === 0;
+                $('topNext').disabled = n === 16;
+                $('prev').textContent = n === 1 ? '← 전체 안내' : '← 이전 주차';
+                $('topPrev').setAttribute('aria-label', n === 1 ? '전체 안내로 이동' : '이전 주차로 이동');
+                $('topNext').setAttribute('aria-label', n === 0 ? '1주차로 이동' : '다음 주차로 이동');
                 $('next').disabled = n === 16;
                 $('next').textContent = n === 0 ? '1주차 보기 →' : '다음 주차 →';
                 $('footerText').textContent = n ? `현재 선택 · ${n}주차` : '전체 흐름 → 주차 선택 → 내용 확인'
@@ -2645,8 +2682,18 @@
                 $('captureList').append(li)
             });
             $('reset').onclick = () => render(0);
-            $('prev').onclick = () => render(Math.max(1, selected - 1));
-            $('next').onclick = () => render(Math.min(16, selected + 1));
+            function navigateWeek(n) {
+                render(n);
+                requestAnimationFrame(() => {
+                    $('shell').scrollIntoView({ behavior: 'instant', block: 'start' });
+                });
+            }
+            const previousWeek = () => navigateWeek(Math.max(0, selected - 1));
+            const nextWeek = () => navigateWeek(Math.min(16, selected + 1));
+            $('prev').onclick = previousWeek;
+            $('topPrev').onclick = previousWeek;
+            $('next').onclick = nextWeek;
+            $('topNext').onclick = nextWeek;
             $('layoutMode').addEventListener('change', event => {
                 $('shell').dataset.mode = event.target.value;
                 hide();
