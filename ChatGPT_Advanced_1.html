@@ -2768,17 +2768,21 @@
             media.research.video = 'assets/week2/research.mp4';
 
             media.w5_1.type = 'image';
-            media.w5_1.preview = 'assets/week5/canvas-activate.png';
+            media.w5_1.preview = 'assets/week5/canvas-activate-preview.png';
             media.w5_1.image = 'assets/week5/canvas-activate.png';
             media.w5_1.steps = [
                 ['assets/week5/canvas-activate.png', '① 입력창 왼쪽 + 버튼 · Canvas 선택'],
                 ['assets/week5/canvas-prompt.png', '② Canvas 활성화 · 프롬프트 입력']
             ];
+            media.w5_1.previewSteps = [
+                ['assets/week5/canvas-activate-preview.png', '① + 메뉴 · Canvas 선택'],
+                ['assets/week5/canvas-prompt-preview.png', '② Canvas 활성화 · 작성한 프롬프트 입력창']
+            ];
             media.w5_4.type = 'image';
-            media.w5_4.preview = 'assets/week5/canvas-result.png';
+            media.w5_4.preview = 'assets/week5/canvas-result-frame-preview.png';
             media.w5_4.image = 'assets/week5/canvas-result.png';
             media.w5_5.type = 'image';
-            media.w5_5.preview = 'assets/week5/canvas-export.png';
+            media.w5_5.preview = 'assets/week5/canvas-export-preview.png';
             media.w5_5.image = 'assets/week5/canvas-export.png';
 
             media.w5_2.preview = 'assets/week5/csv-excel-preview.png';
@@ -2822,9 +2826,10 @@
                 if (!hover.matches || $('dialog').open) return;
                 const h = help[b.dataset.help];
                 const item = media[b.dataset.help];
-                if (item.steps) {
+                const previewSteps = item.previewSteps || item.steps;
+                if (previewSteps) {
                     $('tooltip').replaceChildren();
-                    item.steps.forEach(([path, label]) => {
+                    previewSteps.forEach(([path, label]) => {
                         const step = document.createElement('div');
                         step.className = 'hover-step';
                         const description = document.createElement('small');
