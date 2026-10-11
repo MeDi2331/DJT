@@ -1,3 +1,3 @@
 # Textbook
 
-ChatGPT_Advenced_1.html
+ChatGPT_Advanced_1.html
