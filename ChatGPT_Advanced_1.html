@@ -2163,20 +2163,37 @@
 </article>
 <div class="note"><strong>기억할 점</strong><br/>AI가 만든 프로그램은 직접 실행해 확인합니다. 요청한 규칙이 빠졌거나 다르게 작동하면 구체적으로 수정합니다.<br/>구체적인 규칙을 설명하기 어렵다면, AI에게 프롬프트를 문의하여 나온 결과를 활용합시다.<br/>표, 목록, 단계별 설명 등 원하는 결과의 형태도 함께 요청하면, 활용하기 좋은 답변을 받을 수 있습니다.</div></div>
 <div class="week-summary" data-layout="stack" id="week5" hidden>
-<article class="card"><h3><span class="num">01</span>문서와 발표자료로 활용하기</h3><p>Gemini Canvas에서 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게 <strong>제목·구성·분량</strong>을 조정한 뒤 결과를 활용합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>Canvas에서 자료와 원하는 형식을 입력합니다.</li><li>생성된 내용의 사실·구성·분량을 확인합니다.</li><li>수정 요청 후 제공되는 내보내기 옵션을 확인합니다.</li></ol>
+<article class="card"><h3><span class="num">01</span>문서와 발표자료로 활용하기</h3><p>Gemini의 Canvas 기능을 이용해 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게 <strong>제목·구성·분량</strong>을 조정한 뒤 결과를 활용합니다.</p><h4>사용 순서</h4>
+<ol class="steps"><li><a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>의 입력창 좌측의 <span class="hint" data-help="w5_1" role="button" tabindex="0">+ 버튼을 눌러 Canvas 기능을 활성화 한 <span class="icon-tail">뒤<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>, 생성하고자 하는 자료와 원하는 형식을 입력합니다.</li><li><span class="hint" data-help="w5_4" role="button" tabindex="0">생성된 <span class="icon-tail">내용<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>의 사실·구성·분량을 확인합니다.</li><li>수정 요청 후 제공되는 <span class="hint" data-help="w5_5" role="button" tabindex="0">내보내기 옵션을 <span class="icon-tail">확인<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>합니다.</li></ol>
 <div class="prompt-heading"><h4>예제 프롬프트</h4><div class="prompt-copy-toolbar"><button class="prompt-copy-button" type="button" data-prompt-copy="example-prompt-6" aria-label="예제 프롬프트 복사">복사 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><span class="prompt-copy-feedback" role="status" aria-live="polite"></span></div></div>
 <blockquote class="prompt-copy-prompt"><div id="example-prompt-6" class="prompt-text">이 자료를 초보자용 안내문으로 정리해줘. 제목, 사용 순서, 주의할 점으로 나누고 어려운 표현은 쉽게 바꿔줘.</div></blockquote>
-<p><span class="hint" data-help="w5_1" role="button" tabindex="0">Canvas 문서 작업 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>더미 데이터를 생성하고 확인하기</h3><p>더미 데이터는 연습용 가짜 데이터입니다. <strong>행 개수·열 이름·값의 범위·출력 형식</strong>을 지정합니다. CSV는 표 데이터를 담는 텍스트 형식입니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>AI에 데이터 조건과 CSV 형식을 요청합니다.</li><li>Excel이나 Sheets로 옮겨 표로 확인합니다.</li><li>행·열 개수와 한글·숫자를 검토합니다. 한글이 깨지면 읽는 문자 방식이 UTF-8인지 확인합니다.</li></ol>
+</article>
+<article class="card"><h3><span class="num">02</span>더미 데이터를 생성하고 확인하기</h3><p>더미 데이터는 연습용 가짜 데이터입니다. <strong>행 개수·열 이름·값의 범위·출력 형식</strong>을 지정합니다. CSV는 표 데이터를 담는 텍스트 형식입니다.<br/><strong>유니코드</strong>는 컴퓨터가 한글·영어 등 여러 언어의 글자를 구별할 수 있도록 정한 공통 약속입니다.<br/><strong>UTF-8</strong>은 이 약속에 따라 글자를 파일에 저장하는 방법입니다.<br/>CSV 파일을 저장한 방식과 프로그램이 읽는 방식이 다르면 한글이 깨질 수 있습니다. <strong>UTF-8로 저장한 파일은 불러올 때도 UTF-8을 선택합니다.</strong></p><h4>사용 순서</h4>
+<ol class="steps"><li>AI에 <span class="hint" data-help="w5_6" role="button" tabindex="0">데이터 조건과 CSV 형식을 <span class="icon-tail">요청<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>합니다.</li><li>Excel이나 Sheets로 옮겨 <span class="hint" data-help="w5_2" role="button" tabindex="0">표로 <span class="icon-tail">확인<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>합니다.</li><li>행·열 개수와 한글·숫자를 검토합니다. <span class="hint" data-help="w5_7" role="button" tabindex="0">한글이 깨지면 읽는 문자 방식이 <span class="icon-tail">UTF-8<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>인지 확인합니다.</li></ol>
 <div class="prompt-heading"><h4>예제 프롬프트</h4><div class="prompt-copy-toolbar"><button class="prompt-copy-button" type="button" data-prompt-copy="example-prompt-7" aria-label="예제 프롬프트 복사">복사 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><span class="prompt-copy-feedback" role="status" aria-live="polite"></span></div></div>
 <blockquote class="prompt-copy-prompt"><div id="example-prompt-7" class="prompt-text">실제 개인정보가 아닌 가상의 고객 데이터 20개를 만들어줘. 열은 이름, 나이, 지역, 구매상품, 구매금액으로 구성하고 CSV 형식으로 보여줘. 구매금액은 5000~100000 사이의 정수로 쓰고 숫자 안에는 쉼표를 넣지 마.</div></blockquote>
 <p><strong class="improvement-flow"><span>조건 지정</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>생성</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>표로 확인</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>오류 수정</span></strong></p>
-<p><span class="hint" data-help="w5_2" role="button" tabindex="0">CSV 결과 확인 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>작업 도구와 AI 실험 기능 살펴보기</h3><p>Docs는 문서, Sheets는 표, Slides는 발표자료를 다룹니다. Google Labs와 Workspace Experiments에서 제공되는 실험 기능과 이용 조건을 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>사용할 문서·표·발표 도구를 정합니다.</li><li>실험 기능의 목적과 계정별 참여 조건을 확인합니다.</li><li>제공되는 기능을 연습용 자료로 체험합니다.</li></ol>
-<p><span class="hint" data-help="w5_3" role="button" tabindex="0">AI 실험 기능 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
+</article>
+<article class="card">
+    <h3><span class="num">03</span>작업 도구와 AI 실험 기능 살펴보기</h3>
+    <p><strong>Google Workspace</strong>는 구글의 문서 작성·협업 도구 모음입니다. <strong>Docs</strong>로 문서, <strong>Sheets</strong>로 표와 데이터, <strong>Slides</strong>로 발표자료를 만들 수 있습니다.<br/>
+    각 도구 안의 <strong>Gemini AI 기능</strong>은 이용 중인 요금제와 계정에 따라 제공 범위가 달라집니다. 개인 Google 계정은 <strong>Workspace Experiments</strong>에 참여해 일부 실험 기능을 먼저 사용해 볼 수도 있습니다. 다만 참여 조건과 지원 국가·언어에 따라 이용 가능 여부가 달라집니다.<br/>
+    <strong>Google Labs</strong>에서는 이 밖에도 다양한 AI 도구와 실험 기능을 살펴볼 수 있습니다.</p>
+    <h4>사용 순서</h4>
+    <ol class="steps">
+        <li><a class="service-link" href="https://workspace.google.com/" target="_blank" rel="noopener noreferrer"><span class="icon-tail">Google Workspace <span aria-hidden="true">🔗</span></span></a>에서 사용할 데이터 유형(문서·표·발표 도구(PPT))에 따라 <a class="service-link" href="https://docs.google.com/" target="_blank" rel="noopener noreferrer"><span class="icon-tail">Docs <span aria-hidden="true">🔗</span></span></a>, <a class="service-link" href="https://sheets.google.com/" target="_blank" rel="noopener noreferrer"><span class="icon-tail">Sheets <span aria-hidden="true">🔗</span></span></a>, <a class="service-link" href="https://slides.google.com/" target="_blank" rel="noopener noreferrer"><span class="icon-tail">Slides <span aria-hidden="true">🔗</span></span></a>의 플랫폼을 정합니다.</li>
+        <li>선택한 플랫폼에서 Gemini를 비롯한 AI 기능을 사용하기 위해 <a class="service-link" href="https://workspace.google.com/experiments/" target="_blank" rel="noopener noreferrer"><span class="icon-tail">Workspace Experiments <span aria-hidden="true">🔗</span></span></a>에서 <span class="hint" data-help="w5_3" role="button" tabindex="0">실험 기능 사용에 대한 <span class="icon-tail">동의<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>를 진행합니다.</li>
+        <li>동의 후 각 플랫폼에서 AI 기능을 활용해봅니다. 동일한 사용 방법으로는 <span class="hint" data-help="w5_8" role="button" tabindex="0">우측 상단의 문서 플랫폼 내 Gemini <span class="icon-tail">채팅<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>이 있습니다.</li>
+    </ol>
+    <p>Workspace Experiments 참여는 이용 조건을 충족하는 개인 Google 계정을 기준으로 합니다. 동의 후에도 계정과 기능별 제공 상황에 따라 사용 가능한 기능이 달라질 수 있습니다.</p>
+    <p><strong><span aria-hidden="true">ℹ️</span> 실험 기능 이용 안내</strong><br/>
+    실험 기능은 서비스 운영 정책에 따라 참여 조건, 제공 기능, 이용 가능 기간이 변경되거나 제공이 종료될 수 있습니다. 사용 전에 해당 서비스의 최신 안내를 확인해 주세요.</p>
+    <p><strong><span aria-hidden="true">ℹ️</span> 데이터 전송 및 민감 정보 주의</strong><br/>
+    Workspace Experiments에 동의하고 실험 기능을 사용하면 입력한 질문, 참조한 문서 내용, 생성 결과와 피드백 등이 Google로 전송·수집되어 서비스와 AI 기술 개선에 사용될 수 있으며, 검토 담당자가 확인할 수도 있습니다.<br/>
+    개인정보·비밀번호·비공개 업무 자료 등 민감한 정보를 입력하거나 AI가 참조할 자료에 포함하지 않도록 각별히 주의하고, 실습에는 가상의 자료를 사용합니다.<br/>
+    <a class="service-link" href="https://support.google.com/docs/answer/13447401?hl=ko" target="_blank" rel="noopener noreferrer"><span class="icon-tail">데이터 처리 및 이용 약관 확인 <span aria-hidden="true">🔗</span></span></a>
+    </p>
+</article>
 <div class="note"><strong>기억할 점</strong><br/>연습에는 가상의 데이터를 사용합니다. AI가 만든 표도 요청한 개수·열·값을 직접 확인합니다.</div></div>
 <div class="week-summary" data-layout="pair-first" id="week6" hidden>
 <article class="card"><h3><span class="num">01</span>Docs에서 작성·요약·수정하기</h3><p>문서의 목적과 독자를 알려주고 초안 작성·핵심 요약·문장 다듬기를 요청합니다. 생성된 문장을 읽고 사실과 표현을 확인합니다.</p><h4>사용 순서</h4>
@@ -2331,21 +2348,51 @@
     ],
     "w5_1": [
         "5-01",
-        "Canvas 문서 작업",
-        "문서 생성·수정과 내보내기",
-        "화면 자료는 추후 추가합니다. Canvas에서 자료와 원하는 형식을 입력합니다. 생성된 내용의 사실·구성·분량을 확인합니다. 수정 요청 후 제공되는 내보내기 옵션을 확인합니다."
+        "Gemini Canvas 활성화",
+        "입력창 좌측 + 버튼과 Canvas 선택 메뉴",
+        "Gemini 입력창 좌측의 + 버튼을 눌러 Canvas 기능을 활성화한 뒤, 생성할 자료와 원하는 형식을 입력합니다. 화면과 메뉴 위치는 서비스 변경에 따라 달라질 수 있습니다. 화면 자료는 추후 추가합니다."
+    ],
+    "w5_4": [
+        "5-02",
+        "Canvas 생성 결과 확인",
+        "생성된 문서·발표자료와 결과 확인 영역",
+        "Canvas에서 생성된 내용의 사실·구성·분량을 확인합니다. 목적에 맞게 제목과 내용을 점검하고, 필요한 부분은 수정 요청을 이어갑니다. 화면 자료는 추후 추가합니다."
+    ],
+    "w5_5": [
+        "5-03",
+        "Canvas 내보내기 옵션",
+        "수정한 결과와 내보내기 메뉴",
+        "수정 요청 후 제공되는 내보내기 옵션을 확인합니다. 결과물과 계정에 따라 제공되는 옵션이 다를 수 있으므로, 표시된 항목 중 원하는 방식을 선택합니다. 화면 자료는 추후 추가합니다."
+    ],
+    "w5_6": [
+        "5-04",
+        "더미 데이터 생성 요청",
+        "행 개수·열 이름·값 범위·CSV 형식을 요청한 입력창과 생성 결과",
+        "예제 프롬프트처럼 가상의 데이터임을 명시하고 행 개수, 열 이름, 값의 범위와 CSV 출력 형식을 요청합니다. 실제 개인정보 대신 연습용 데이터를 사용합니다. 화면 자료는 추후 추가합니다."
     ],
     "w5_2": [
-        "5-02",
-        "CSV 결과 확인",
-        "AI가 생성한 CSV와 표 결과",
-        "화면 자료는 추후 추가합니다. AI에 데이터 조건과 CSV 형식을 요청합니다. Excel이나 Sheets로 옮겨 표로 확인합니다. 행·열 개수와 한글·숫자를 검토합니다. 한글이 깨지면 읽는 문자 방식이 UTF-8인지 확인합니다."
+        "5-05",
+        "Excel에서 CSV 열기",
+        "CSV 파일을 Excel로 불러와 표로 확인하는 과정",
+        "생성한 CSV 파일을 Excel에서 불러와 표로 확인합니다. 불러오기 화면에서 열이 올바르게 나뉘었는지 확인한 뒤 행·열 개수와 값을 점검합니다. CSV 파일을 여는 방법을 보여주는 캡처와 영상은 추후 추가합니다."
+    ],
+    "w5_7": [
+        "5-06",
+        "CSV 한글과 UTF-8 확인",
+        "불러오기 데이터 미리보기와 UTF-8 인코딩 선택 위치",
+        "CSV를 불러오는 미리보기에서 한글과 숫자, 열 구분을 확인합니다. UTF-8로 저장한 파일의 한글이 깨지면 읽는 인코딩을 UTF-8로 변경하고 다시 확인합니다. 파일이 다른 인코딩으로 저장되어 있다면 그 방식에 맞춰 읽어야 합니다. 데이터 확인과 UTF-8 선택 방법을 보여주는 영상은 추후 추가합니다."
     ],
     "w5_3": [
-        "5-03",
-        "AI 실험 기능",
-        "Labs와 Workspace Experiments의 참여 안내",
-        "화면 자료는 추후 추가합니다. 사용할 문서·표·발표 도구를 정합니다. 실험 기능의 목적과 계정별 참여 조건을 확인합니다. 제공되는 기능을 연습용 자료로 체험합니다."
+        "5-07",
+        "Workspace Experiments 참여 동의",
+        "개인 계정 로그인 후 참여 조건과 데이터 처리 안내를 확인하는 동의 화면",
+        "Workspace Experiments에서 참여 조건과 데이터 처리 안내를 읽고 실험 기능 사용에 동의합니다. 지원되는 개인 계정과 국가·언어에 따라 참여 가능 여부가 달라집니다. 개인정보와 비공개 자료 대신 가상의 자료로 실습합니다. 화면 자료는 추후 추가합니다."
+    ],
+    "w5_8": [
+        "5-08",
+        "문서 플랫폼의 Gemini 채팅",
+        "Docs·Sheets·Slides 우측 상단 Gemini 버튼과 채팅 측면 패널",
+        "문서 플랫폼 우측 상단의 Gemini 버튼을 눌러 채팅 측면 패널을 열고 작업을 요청합니다. 계정과 제공 기능에 따라 버튼이 없거나 화면 위치가 달라질 수 있습니다. 화면 자료는 추후 추가합니다."
     ],
     "w6_1": [
         "6-01",
@@ -2452,12 +2499,16 @@
                 "https://gemini.google.com/"
             ],
             [
-                "Google Labs",
-                "https://labs.google/"
+                "Google Workspace",
+                "https://workspace.google.com/"
             ],
             [
                 "Workspace Experiments",
                 "https://workspace.google.com/experiments/"
+            ],
+            [
+                "Google Labs",
+                "https://labs.google/"
             ]
         ]
     },
@@ -2642,6 +2693,11 @@
             media.plus.type = 'image';
             media.plus.image = 'assets/week2/plus-full.png';
             media.research.video = 'assets/week2/research.mp4';
+
+            media.w5_2.preview = 'assets/week5/csv-excel-preview.png';
+            media.w5_2.video = 'assets/week5/csv-excel.mp4';
+            media.w5_7.preview = 'assets/week5/csv-utf8-preview.png';
+            media.w5_7.video = 'assets/week5/csv-utf8.mp4';
 
             media.w3_6.type = 'image';
             media.w3_6.preview = 'assets/week3/arena-prompt-preview.png';
