@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8"/>
-        <meta content="width=device-width,initial-scale=1" name="viewport"/>
-        <title>ChatGPT 심화1반 · 학습 로드맵</title>
-        <style>
-            * {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   ChatGPT 심화1반 · 학습 로드맵
+  </title>
+  <style>
+   * {
                 box-sizing: border-box
             }
 
@@ -1397,240 +1399,1380 @@
                     grid-template-columns: minmax(0, 1fr);
                 }
             }
-        </style>
-    </head>
-    <body>
-        <div class="toolbar">
-            <p class="data-notice">모바일 데이터로 이미지·영상을 불러오면 요금제에 따라 데이터 비용이 발생할 수 있습니다.</p>
-            <div class="layout-control">
-                <label for="layoutMode">레이아웃:</label>
-                <select id="layoutMode" aria-label="레이아웃 미리보기 선택">
-                    <option value="auto" selected>자동</option>
-                    <option value="phone">스마트폰</option>
-                    <option value="tablet">태블릿</option>
-                    <option value="pc">PC</option>
-                </select>
-            </div>
+  </style>
+ </head>
+ <body>
+  <div class="toolbar">
+   <p class="data-notice">
+    모바일 데이터로 이미지·영상을 불러오면 요금제에 따라 데이터 비용이 발생할 수 있습니다.
+   </p>
+   <div class="layout-control">
+    <label for="layoutMode">
+     레이아웃:
+    </label>
+    <select aria-label="레이아웃 미리보기 선택" id="layoutMode">
+     <option selected="" value="auto">
+      자동
+     </option>
+     <option value="phone">
+      스마트폰
+     </option>
+     <option value="tablet">
+      태블릿
+     </option>
+     <option value="pc">
+      PC
+     </option>
+    </select>
+   </div>
+  </div>
+  <main class="shell" data-mode="auto" id="shell">
+   <header>
+    <div>
+     <div class="eyebrow">
+      LEARNING ROADMAP
+     </div>
+     <h1>
+      16주, 하나의 학습 여정
+     </h1>
+     <p class="sub">
+      전체 흐름을 살펴보고 궁금한 주차를 선택하세요.
+     </p>
+    </div>
+    <button class="reset" id="reset">
+     전체 안내
+    </button>
+   </header>
+   <section class="index">
+    <div class="index-head">
+     <strong>
+      주차별 학습 흐름
+     </strong>
+    </div>
+    <div class="map" id="map">
+     <svg aria-hidden="true" class="path" id="path">
+     </svg>
+     <div class="nodes" id="nodes">
+     </div>
+    </div>
+    <div class="legend">
+     <span>
+      01 시작
+     </span>
+     <span>
+      16 도착
+     </span>
+     <span>
+      선을 따라 주차가 이어집니다
+     </span>
+    </div>
+   </section>
+   <section aria-live="polite" class="content">
+    <div class="content-head">
+     <div>
+      <span class="badge" id="badge">
+       WEEK 02
+      </span>
+      <h2 id="title">
+       생성형 AI 이해와 질문하는 방법
+      </h2>
+      <p class="description" id="description">
+       생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다.
+       <br/>
+       ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.
+      </p>
+     </div>
+     <div class="counter" id="counter">
+      02/16
+     </div>
+    </div>
+    <div class="body-grid">
+     <div>
+      <div class="week-summary" id="week2">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         생성형 AI 알아보기
+        </h3>
+        <p>
+         <strong>
+          생성형 AI
+         </strong>
+         는 사용자의 요청에 따라 글·이미지·표·코드 등의 결과물을 만드는 AI입니다.
+         <br/>
+         <strong>
+          ChatGPT
+         </strong>
+         와
+         <strong>
+          Gemini
+         </strong>
+         로 질문하고 내용을 작성·정리할 수 있습니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          <a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">
+           <span class="icon-tail">
+            ChatGPT
+            <span aria-hidden="true">
+             🔗
+            </span>
+           </span>
+          </a>
+          또는
+          <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank">
+           <span class="icon-tail">
+            Gemini
+            <span aria-hidden="true">
+             🔗
+            </span>
+           </span>
+          </a>
+          에 접속합니다.
+         </li>
+         <li>
+          <span class="hint" data-help="login" role="button" tabindex="0">
+           화면 오른쪽 상단의 로그인 버튼 → Google로
+           <span class="icon-tail">
+            계속
+            <span aria-hidden="true" class="help-icon">
+             🔍
+            </span>
+           </span>
+          </span>
+          을 선택해 Google 계정으로 로그인합니다.
+         </li>
+         <li>
+          <span class="hint" data-help="send" role="button" tabindex="0">
+           화면 아래쪽 입력창에 질문을 작성하고 전송
+           <span class="icon-tail">
+            버튼
+            <span aria-hidden="true" class="help-icon">
+             🔍
+            </span>
+           </span>
+          </span>
+          을 누릅니다.
+         </li>
+        </ol>
+        <h4>
+         처음 해볼 질문
+        </h4>
+        <blockquote>
+         생성형 AI가 무엇인지 일상생활의 활용 예시 3개와 함께 쉽게 설명해줘.
+        </blockquote>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         프롬프트 작성하기
+        </h3>
+        <p>
+         <strong>
+          프롬프트
+         </strong>
+         는 AI에게 전달하는 질문이나 지시입니다. 목적·대상·조건·결과 형식을 함께 설명합니다.
+        </p>
+        <ul class="steps">
+         <li>
+          <strong>
+           목적:
+          </strong>
+          수업 복습용 안내문 작성
+         </li>
+         <li>
+          <strong>
+           대상:
+          </strong>
+          생성형 AI를 처음 배우는 성인
+         </li>
+         <li>
+          <strong>
+           조건:
+          </strong>
+          쉬운 표현, 생활 속 예시 3개
+         </li>
+         <li>
+          <strong>
+           형식:
+          </strong>
+          짧은 설명과 핵심 정리표
+         </li>
+        </ul>
+        <h4>
+         요청 예시
+        </h4>
+        <blockquote>
+         생성형 AI를 처음 배우는 성인을 위한 수업 복습용 안내문을 작성해줘. 쉬운 표현으로 생활 속 활용 예시 3개를 넣고, 마지막에 핵심 내용을 표로 정리해줘.
+        </blockquote>
+        <h4>
+         답변 개선하기
+        </h4>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           첫 요청
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           답변 확인
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           조건 추가
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           수정 결과 확인
+          </span>
+         </strong>
+        </p>
+        <p>
+         같은 대화에서 “전문 용어를 줄여줘”처럼 요청을 이어갑니다.
+         <br/>
+         <br/>
+         복잡한 작업은 다음처럼 나눠 진행합니다.
+         <br/>
+         <strong class="improvement-flow">
+          <span>
+           조사
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           정리
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           결과물 작성
+          </span>
+         </strong>
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         조사에서 발표자료까지
+        </h3>
+        <p>
+         <strong>
+          심층 리서치
+         </strong>
+         는 여러 자료를 조사해 출처와 함께 정리하는 기능입니다.
+         <br/>
+         <strong>
+          Canvas
+         </strong>
+         는 결과물을 작성하고 수정하는 작업 공간입니다.
+        </p>
+        <div class="practice-grid">
+         <section class="practice">
+          <h4>
+           ①
+           <a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank">
+            <span class="icon-tail">
+             ChatGPT
+             <span aria-hidden="true">
+              🔗
+             </span>
+            </span>
+           </a>
+           에서 조사하기
+          </h4>
+          <ol class="steps">
+           <li>
+            <span class="hint" data-help="plus" role="button" tabindex="0">
+             입력창 왼쪽의 ＋
+             <span class="icon-tail">
+              버튼
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            을 누릅니다.
+           </li>
+           <li>
+            <span class="hint" data-help="research" role="button" tabindex="0">
+             펼쳐진 메뉴에서 심층
+             <span class="icon-tail">
+              리서치
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            를 선택합니다.
+           </li>
+           <li>
+            주제·조사 범위·결과 형식을 입력하고 전송합니다.
+           </li>
+           <li>
+            <span class="hint" data-help="source" role="button" tabindex="0">
+             완성된 보고서의 출처
+             <span class="icon-tail">
+              표시
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            를 선택해 원문을 확인합니다.
+           </li>
+          </ol>
+          <blockquote>
+           한국 성인의 일상생활 속 생성형 AI 활용 사례를 조사해줘. 최근 1년 자료를 중심으로 사례 5개와 각 출처를 정리해줘.
+          </blockquote>
+         </section>
+         <section class="practice">
+          <h4>
+           ②
+           <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank">
+            <span class="icon-tail">
+             Gemini
+             <span aria-hidden="true">
+              🔗
+             </span>
+            </span>
+           </a>
+           에서 발표자료 만들기
+          </h4>
+          <ol class="steps">
+           <li>
+            확인한 조사 결과를 Gemini 입력창에 붙여넣습니다.
+           </li>
+           <li>
+            <span class="hint" data-help="canvas" role="button" tabindex="0">
+             입력창 주변 도구 메뉴의
+             <span class="icon-tail">
+              Canvas
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            를 선택합니다.
+           </li>
+           <li>
+            발표 시간·대상·슬라이드 수를 적어 요청합니다.
+           </li>
+           <li>
+            <span class="hint" data-help="edit" role="button" tabindex="0">
+             Canvas 작업
+             <span class="icon-tail">
+              화면
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            에서 내용을 확인하고 수정을 요청합니다.
+           </li>
+           <li>
+            <span class="hint" data-help="export" role="button" tabindex="0">
+             내보내기
+             <span class="icon-tail">
+              메뉴
+              <span aria-hidden="true" class="help-icon">
+               🔍
+              </span>
+             </span>
+            </span>
+            에서 제공되는 저장·전환 옵션을 선택합니다.
+           </li>
+          </ol>
+          <blockquote>
+           위 조사 결과를 바탕으로 AI 초보자를 위한 5분 발표자료를 만들어줘. 표지와 결론을 포함해 6장으로 구성하고, 각 장에는 핵심 내용 3개 이내로 넣어줘.
+          </blockquote>
+         </section>
         </div>
-        <main class="shell" data-mode="auto" id="shell">
-            <header>
-                <div>
-                    <div class="eyebrow">
-                        LEARNING ROADMAP
-                    </div>
-                    <h1>16주, 하나의 학습 여정</h1>
-                    <p class="sub">전체 흐름을 살펴보고 궁금한 주차를 선택하세요.</p>
-                </div>
-                <button class="reset" id="reset">전체 안내</button>
-            </header>
-            <section class="index">
-                <div class="index-head">
-                    <strong>주차별 학습 흐름</strong>
-                </div>
-                <div class="map" id="map">
-                    <svg aria-hidden="true" class="path" id="path">
-                    </svg>
-                    <div class="nodes" id="nodes">
-                    </div>
-                </div>
-                <div class="legend">
-                    <span>01 시작</span>
-                    <span>16 도착</span>
-                    <span>선을 따라 주차가 이어집니다</span>
-                </div>
-            </section>
-            <section aria-live="polite" class="content">
-                <div class="content-head">
-                    <div>
-                        <span class="badge" id="badge">WEEK 02</span>
-                        <h2 id="title">생성형 AI 이해와 질문하는 방법</h2>
-                        <p class="description" id="description">생성형 AI의 기본 개념을 알아보고, 질문을 구체화합니다.<br/>ChatGPT로 자료를 조사하고 Gemini에서 발표자료로 구성합니다.</p>
-                    </div>
-                    <div class="counter" id="counter">
-                        02/16
-                    </div>
-                </div>
-                <div class="body-grid">
-                    <div>
-                        <div class="week-summary" id="week2">
-                            <article class="card">
-                                <h3><span class="num">01</span>생성형 AI 알아보기</h3>
-                                <p><strong>생성형 AI</strong>는 사용자의 요청에 따라 글·이미지·표·코드 등의 결과물을 만드는 AI입니다. <br/><strong>ChatGPT</strong>와 <strong>Gemini</strong>로 질문하고 내용을 작성·정리할 수 있습니다.</p>
-                                <h4>사용 순서</h4>
-                                <ol class="steps">
-                                    <li><a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">ChatGPT <span aria-hidden="true">🔗</span></span></a> 또는 <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>에 접속합니다.</li>
-                                    <li><span class="hint" data-help="login" role="button" tabindex="0">화면 오른쪽 상단의 로그인 버튼 → Google로 <span class="icon-tail">계속<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 선택해 Google 계정으로 로그인합니다.</li>
-                                    <li><span class="hint" data-help="send" role="button" tabindex="0">화면 아래쪽 입력창에 질문을 작성하고 전송 <span class="icon-tail">버튼<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 누릅니다.</li>
-                                </ol>
-                                <h4>처음 해볼 질문</h4>
-                                <blockquote>생성형 AI가 무엇인지 일상생활의 활용 예시 3개와 함께 쉽게 설명해줘.</blockquote>
-                            </article>
-                            <article class="card">
-                                <h3><span class="num">02</span>프롬프트 작성하기</h3>
-                                <p><strong>프롬프트</strong>는 AI에게 전달하는 질문이나 지시입니다. 목적·대상·조건·결과 형식을 함께 설명합니다.</p>
-                                <ul class="steps">
-                                    <li><strong>목적:</strong> 수업 복습용 안내문 작성</li>
-                                    <li><strong>대상:</strong> 생성형 AI를 처음 배우는 성인</li>
-                                    <li><strong>조건:</strong> 쉬운 표현, 생활 속 예시 3개</li>
-                                    <li><strong>형식:</strong> 짧은 설명과 핵심 정리표</li>
-                                </ul>
-                                <h4>요청 예시</h4>
-                                <blockquote>생성형 AI를 처음 배우는 성인을 위한 수업 복습용 안내문을 작성해줘. 쉬운 표현으로 생활 속 활용 예시 3개를 넣고, 마지막에 핵심 내용을 표로 정리해줘.</blockquote>
-                                <h4>답변 개선하기</h4>
-                                <p><strong class="improvement-flow"><span>첫 요청</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>답변 확인</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>조건 추가</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>수정 결과 확인</span></strong></p>
-                                <p>같은 대화에서 “전문 용어를 줄여줘”처럼 요청을 이어갑니다. <br/><br/>복잡한 작업은 다음처럼 나눠 진행합니다.<br/><strong class="improvement-flow"><span>조사</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>정리</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>결과물 작성</span></strong></p>
-                            </article>
-                            <article class="card">
-                                <h3><span class="num">03</span>조사에서 발표자료까지</h3>
-                                <p><strong>심층 리서치</strong>는 여러 자료를 조사해 출처와 함께 정리하는 기능입니다. <br/><strong>Canvas</strong>는 결과물을 작성하고 수정하는 작업 공간입니다.</p>
-                                <div class="practice-grid">
-                                    <section class="practice">
-                                        <h4>① <a class="service-link" href="https://chatgpt.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">ChatGPT <span aria-hidden="true">🔗</span></span></a>에서 조사하기</h4>
-                                        <ol class="steps">
-                                            <li><span class="hint" data-help="plus" role="button" tabindex="0">입력창 왼쪽의 ＋ <span class="icon-tail">버튼<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>을 누릅니다.</li>
-                                            <li><span class="hint" data-help="research" role="button" tabindex="0">펼쳐진 메뉴에서 심층 <span class="icon-tail">리서치<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>를 선택합니다.</li>
-                                            <li>주제·조사 범위·결과 형식을 입력하고 전송합니다.</li>
-                                            <li><span class="hint" data-help="source" role="button" tabindex="0">완성된 보고서의 출처 <span class="icon-tail">표시<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>를 선택해 원문을 확인합니다.</li>
-                                        </ol>
-                                        <blockquote>한국 성인의 일상생활 속 생성형 AI 활용 사례를 조사해줘. 최근 1년 자료를 중심으로 사례 5개와 각 출처를 정리해줘.</blockquote>
-                                    </section>
-                                    <section class="practice">
-                                        <h4>② <a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>에서 발표자료 만들기</h4>
-                                        <ol class="steps">
-                                            <li>확인한 조사 결과를 Gemini 입력창에 붙여넣습니다.</li>
-                                            <li><span class="hint" data-help="canvas" role="button" tabindex="0">입력창 주변 도구 메뉴의 <span class="icon-tail">Canvas<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>를 선택합니다.</li>
-                                            <li>발표 시간·대상·슬라이드 수를 적어 요청합니다.</li>
-                                            <li><span class="hint" data-help="edit" role="button" tabindex="0">Canvas 작업 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>에서 내용을 확인하고 수정을 요청합니다.</li>
-                                            <li><span class="hint" data-help="export" role="button" tabindex="0">내보내기 <span class="icon-tail">메뉴<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>에서 제공되는 저장·전환 옵션을 선택합니다.</li>
-                                        </ol>
-                                        <blockquote>위 조사 결과를 바탕으로 AI 초보자를 위한 5분 발표자료를 만들어줘. 표지와 결론을 포함해 6장으로 구성하고, 각 장에는 핵심 내용 3개 이내로 넣어줘.</blockquote>
-                                    </section>
-                                </div>
-                            </article>
-                            <div class="note">
-                                <strong>기억할 점</strong>
-                                <br/>
-                                사실·출처·조사 시점을 확인하고 활용합니다. 버튼 위치와 제공 기능은 계정·업데이트에 따라 달라질 수 있습니다.
-                            </div>
-                        </div>
-                        <div class="week-summary" data-layout="pair-first" id="week3" hidden>
-<article class="card"><h3><span class="num">01</span>이미지 생성 조건 정하기</h3><p>이미지 요청에는 <strong>대상·배경·스타일·구도·세부 조건</strong>을 넣습니다. 결과를 확인하면서 조건을 보완하고, 바꿀 부분과 유지할 부분을 구분합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>만들 대상과 사용 목적을 정합니다.</li><li>배경·스타일·구도와 필요한 세부 조건을 적습니다.</li><li>결과를 보고 수정할 부분을 구체적으로 설명합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>태풍을 설명하는 일기예보용 이미지를 만들어줘. 바다 위 태풍과 이동 경로가 보이도록 구성하고, 수업 자료에 사용할 수 있게 주요 요소를 명확하게 표현해줘.</blockquote>
-<p><span class="hint" data-help="w3_1" role="button" tabindex="0">이미지 모델 선택 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>AI Studio에서 생성하고 수정하기</h3><p>Google AI Studio에서 이미지 생성 모델을 선택하고 준비한 프롬프트를 입력합니다. 모델에 따라 구도·글자·세부 표현이 달라질 수 있습니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>AI Studio에 접속해 이미지 생성 모델을 선택합니다.</li><li>프롬프트를 입력하고 결과를 확인합니다.</li><li>부족한 조건을 추가해 다시 요청합니다.</li></ol>
-<p><strong class="improvement-flow"><span>모델 선택</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>프롬프트 입력</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>생성</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>확인·수정</span></strong></p>
-<p><span class="hint" data-help="w3_2" role="button" tabindex="0">이미지 입력·결과 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>Arena에서 결과 비교하기</h3><p>같은 요청으로 생성된 두 이미지의 <strong>요청 반영·구도·글자 정확성·세부 표현</strong>을 비교합니다. 수업 자료의 Battle Mode에서는 평가 후 모델 이름을 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>로그인 후 이미지 비교 화면과 Battle Mode를 확인합니다.</li><li>같은 프롬프트로 두 결과를 생성합니다.</li><li>결과를 비교·평가한 뒤 모델 이름을 확인합니다.</li></ol>
-<p><strong class="improvement-flow"><span>같은 요청</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>두 결과 비교</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>평가</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>모델 확인</span></strong></p>
-<p><span class="hint" data-help="w3_3" role="button" tabindex="0">Arena 비교 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<div class="note"><strong>기억할 점</strong><br/>모델 이름만으로 우열을 정하기보다, 내가 요청한 조건이 얼마나 반영되었는지 비교합니다.</div></div>
-<div class="week-summary" data-layout="first-wide" id="week4" hidden>
-<article class="card"><h3><span class="num">01</span>목적과 규칙을 프롬프트로 정리하기</h3><p>바이브 코딩은 원하는 기능과 모습을 말로 설명하고, AI가 만든 코드를 실행·수정하며 프로그램을 완성하는 방식입니다. 게임 실습에서는 <strong>준비·진행·특별 규칙·승리 조건</strong>을 나누어 작성합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>사용자 수와 시작 화면을 정합니다.</li><li>차례·행동·이동·특별 규칙을 설명합니다.</li><li>승리·종료 조건을 정하고 빠진 조건을 AI에게 질문받습니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>내가 설명하는 게임 규칙을 프로그램 제작용 프롬프트로 정리해줘. 빠진 조건이나 모호한 규칙이 있으면 먼저 질문해줘.</blockquote>
-<p><span class="hint" data-help="w4_1" role="button" tabindex="0">앱 제작 시작 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>AI Studio에서 제작하고 실행하기</h3><p>앱 제작 화면에 프롬프트를 입력하고, 생성된 프로그램을 미리보기에서 실행합니다. 게임 이름보다 구체적인 규칙과 동작을 설명합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>AI Studio의 Build 또는 New app을 엽니다.</li><li>제작 프롬프트를 입력해 생성합니다.</li><li>미리보기에서 버튼·차례·이동·승리 판정을 확인합니다.</li></ol>
-<p><strong class="improvement-flow"><span>규칙 설명</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>생성</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>실행</span></strong></p>
-<p><span class="hint" data-help="w4_2" role="button" tabindex="0">실행 미리보기 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>문제를 설명하고 반복 수정하기</h3><p>수정 요청에는 <strong>문제가 발생한 상황·현재 결과·원하는 결과</strong>를 함께 적습니다. 문제를 하나씩 수정하고 기존 규칙도 다시 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>문제가 발생한 동작을 다시 실행합니다.</li><li>현재 결과와 원하는 동작을 비교해 설명합니다.</li><li>수정 후 같은 상황과 다른 규칙을 확인합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>상대 말이 있는 칸에 도착해도 상대 말이 그대로 남아 있어. 상대 말을 출발 지점으로 보내줘. 다른 이동 규칙은 유지해줘.</blockquote>
-<p><strong class="improvement-flow"><span>문제 확인</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>수정 요청</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>재실행</span></strong></p>
-<p><span class="hint" data-help="w4_3" role="button" tabindex="0">수정 요청 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<div class="note"><strong>기억할 점</strong><br/>AI가 만든 프로그램은 직접 실행해 확인합니다. 요청한 규칙이 빠졌거나 다르게 작동하면 구체적으로 수정합니다.</div></div>
-<div class="week-summary" data-layout="stack" id="week5" hidden>
-<article class="card"><h3><span class="num">01</span>문서와 발표자료로 활용하기</h3><p>Gemini Canvas에서 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게 <strong>제목·구성·분량</strong>을 조정한 뒤 결과를 활용합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>Canvas에서 자료와 원하는 형식을 입력합니다.</li><li>생성된 내용의 사실·구성·분량을 확인합니다.</li><li>수정 요청 후 제공되는 내보내기 옵션을 확인합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>이 자료를 초보자용 안내문으로 정리해줘. 제목, 사용 순서, 주의할 점으로 나누고 어려운 표현은 쉽게 바꿔줘.</blockquote>
-<p><span class="hint" data-help="w5_1" role="button" tabindex="0">Canvas 문서 작업 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>더미 데이터를 생성하고 확인하기</h3><p>더미 데이터는 연습용 가짜 데이터입니다. <strong>행 개수·열 이름·값의 범위·출력 형식</strong>을 지정합니다. CSV는 표 데이터를 담는 텍스트 형식입니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>AI에 데이터 조건과 CSV 형식을 요청합니다.</li><li>Excel이나 Sheets로 옮겨 표로 확인합니다.</li><li>행·열 개수와 한글·숫자를 검토합니다. 한글이 깨지면 읽는 문자 방식이 UTF-8인지 확인합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>실제 개인정보가 아닌 가상의 고객 데이터 20개를 만들어줘. 열은 이름, 나이, 지역, 구매상품, 구매금액으로 구성하고 CSV 형식으로 보여줘. 구매금액은 5000~100000 사이의 정수로 쓰고 숫자 안에는 쉼표를 넣지 마.</blockquote>
-<p><strong class="improvement-flow"><span>조건 지정</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>생성</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>표로 확인</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>오류 수정</span></strong></p>
-<p><span class="hint" data-help="w5_2" role="button" tabindex="0">CSV 결과 확인 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>작업 도구와 AI 실험 기능 살펴보기</h3><p>Docs는 문서, Sheets는 표, Slides는 발표자료를 다룹니다. Google Labs와 Workspace Experiments에서 제공되는 실험 기능과 이용 조건을 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>사용할 문서·표·발표 도구를 정합니다.</li><li>실험 기능의 목적과 계정별 참여 조건을 확인합니다.</li><li>제공되는 기능을 연습용 자료로 체험합니다.</li></ol>
-<p><span class="hint" data-help="w5_3" role="button" tabindex="0">AI 실험 기능 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<div class="note"><strong>기억할 점</strong><br/>연습에는 가상의 데이터를 사용합니다. AI가 만든 표도 요청한 개수·열·값을 직접 확인합니다.</div></div>
-<div class="week-summary" data-layout="pair-first" id="week6" hidden>
-<article class="card"><h3><span class="num">01</span>Docs에서 작성·요약·수정하기</h3><p>문서의 목적과 독자를 알려주고 초안 작성·핵심 요약·문장 다듬기를 요청합니다. 생성된 문장을 읽고 사실과 표현을 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>문서를 열고 제공되는 Gemini 기능을 엽니다.</li><li>목적·독자·분량을 포함해 요청합니다.</li><li>답변을 검토하고 필요한 내용만 반영합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>이 문서를 처음 읽는 사람도 이해할 수 있도록 핵심 내용을 5개로 요약해줘. 어려운 표현은 쉽게 바꾸고 원문에 없는 내용은 추가하지 마.</blockquote>
-<p><span class="hint" data-help="w6_1" role="button" tabindex="0">Docs AI 사용 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>Slides에서 발표 구성 다듬기</h3><p>발표 대상·시간·장수를 지정해 슬라이드 구성과 내용을 요청합니다. 글의 양과 이미지가 발표 목적에 맞는지 확인합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>발표자료를 열고 Gemini에 구성·요약 등을 요청합니다.</li><li>생성된 슬라이드나 내용을 검토합니다.</li><li>필요한 부분을 반영하고 표현과 배치를 조정합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>이 자료를 성인 초보자 대상의 5분 발표로 구성해줘. 각 슬라이드는 제목과 핵심 내용 3개 이내로 정리해줘.</blockquote>
-<p><span class="hint" data-help="w6_2" role="button" tabindex="0">Slides AI 사용 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>Sheets에서 표 생성·정리하기</h3><p>필요한 열과 조건을 설명해 표를 만들거나 기존 데이터의 요약·정리를 요청합니다. <strong>숫자·날짜·범위·계산 결과</strong>를 검토합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>시트를 열고 Gemini에 필요한 작업을 설명합니다.</li><li>사용한 데이터 범위와 결과를 확인합니다.</li><li>검토한 결과를 반영하고 추가 수정을 요청합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>이 표를 지역별로 정리하고 구매금액의 합계를 비교해줘. 어떤 데이터 범위를 사용했는지도 함께 설명해줘.</blockquote>
-<p><strong class="improvement-flow"><span>문서 열기</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>AI 요청</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>결과 검토</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>반영·수정</span></strong></p>
-<p><span class="hint" data-help="w6_3" role="button" tabindex="0">Sheets AI 사용 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<div class="note"><strong>기억할 점</strong><br/>AI 기능의 제공 여부는 계정과 이용 조건에 따라 다를 수 있습니다. 결과를 문서에 반영하기 전에 내용을 확인합니다.</div></div>
-<div class="week-summary" data-layout="first-wide" id="week7" hidden>
-<article class="card"><h3><span class="num">01</span>주제에 맞는 자료 준비하기</h3><p>제공 자료에서 다루는 Gemini Notebook은 내 자료를 중심으로 질문하고 정리하는 작업 공간입니다. 자료의 양보다 <strong>질문과의 관련성</strong>이 중요합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>새 노트북을 만들고 주제가 드러나는 이름을 정합니다.</li><li>PDF·Drive 문서·웹페이지·텍스트 등을 소스로 추가합니다.</li><li>등록된 자료와 질문에 사용할 선택 범위를 확인합니다.</li></ol>
-<p><strong class="improvement-flow"><span>주제 정하기</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>자료 추가</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>범위 선택</span></strong></p>
-<p><span class="hint" data-help="w7_1" role="button" tabindex="0">새 노트북과 자료 추가 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>선택한 자료 안에서 질문하기</h3><p>요약·비교·공통점·쟁점을 요청합니다. 답변 범위를 선택한 자료 안으로 제한하고 자료에 없는 내용은 구분하도록 지시합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>질문에 필요한 소스를 선택합니다.</li><li>원하는 작업과 답변 형식을 입력합니다.</li><li>누락된 내용과 다른 해석을 추가 질문합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>선택한 자료 안에서만 공통 내용과 차이점을 정리해줘. 각 항목의 근거를 표시하고, 자료에서 확인할 수 없는 내용은 확인 불가라고 적어줘.</blockquote>
-<p><span class="hint" data-help="w7_2" role="button" tabindex="0">자료 기반 질문 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>인용과 원문에서 근거 확인하기</h3><p>인용 표시를 열어 원문과 비교합니다. <strong>확인된 사실·AI의 해석·추가 제안</strong>을 구분해 결론을 정리합니다.</p><h4>사용 순서</h4>
-<ol class="steps"><li>답변의 인용 번호를 선택합니다.</li><li>소스 보기에서 원문이 결론을 뒷받침하는지 확인합니다.</li><li>근거와 한계를 적고 필요한 부분을 다시 질문합니다.</li></ol>
-<h4>예제 프롬프트</h4><blockquote>각 결론을 뒷받침하는 원문 근거를 보여줘. 사실과 해석, 개선 제안을 구분해서 정리해줘.</blockquote>
-<p><strong class="improvement-flow"><span>질문</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>인용·원문 확인</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>추가 질문</span> <span aria-hidden="true" class="flow-arrow">→</span> <span>결론</span></strong></p>
-<p><span class="hint" data-help="w7_3" role="button" tabindex="0">인용·원문 확인 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<div class="note"><strong>기억할 점</strong><br/>자료에 없는 내용을 추측으로 채우지 않습니다. 웹 링크 수집 도구는 자료 준비를 돕는 보조 수단으로 활용합니다.</div></div>
-                        <div hidden="" id="other">
-                        </div>
-                    </div>
-                    <aside class="resource">
-                        <h3>자료 및 화면 안내</h3>
-                        <div id="resourceLinks"></div>
-                        <small>요약 PDF 링크는 추후 연결합니다.</small>
-                        <hr/>
-                        <p><strong>안내 표시를 확인하세요</strong></p>
-                        <small>PC: 마우스 오버로 버튼 주변을 미리 보고, 클릭으로 이미지 또는 영상과 설명을 엽니다.<br/>휴대폰: 터치로 이미지 또는 영상 안내를 엽니다.<br/>🔍 점선 밑줄: 화면 설명<br/>🔗 파란 밑줄: 웹사이트 열기<br/>로그인과 ＋ 버튼은 정지 이미지로 안내합니다. 나머지 항목은 준비된 영상으로 안내합니다.</small>
-                        <details hidden id="captureDetails">
-                            <summary>필요한 캡처 목록</summary>
-                            <ol class="capture-list" id="captureList">
-                            </ol>
-                        </details>
-                    </aside>
-                </div>
-                <div class="footer">
-                    <span id="footerText">현재 선택 · 2주차</span>
-                    <div class="nav">
-                        <button id="prev">← 이전 주차</button>
-                        <button id="next">다음 주차 →</button>
-                    </div>
-                </div>
-            </section>
-            <noscript>주차 전환과 화면 안내는 JavaScript를 지원하는 브라우저에서 사용할 수 있습니다. 위 2주차 본문은 그대로 읽을 수 있습니다.</noscript>
-        </main>
-        <div class="tooltip" hidden="" id="tooltip">
-        </div>
-        <dialog aria-labelledby="modalTitle" id="dialog">
-            <div class="modal-head">
-                <div>
-                    <span class="badge" id="modalId"></span>
-                    <h3 id="modalTitle"></h3>
-                </div>
-                <button aria-label="안내 닫기" class="close" id="close">닫기 ×</button>
-            </div>
-            <div class="placeholder full" id="fullFrame">
-            </div>
-            <p id="modalDescription"></p>
-            <div class="note" id="modalMediaNote"></div>
-            <p class="modal-data-notice" id="modalDataNotice" hidden>모바일 데이터로 이미지·영상을 불러오면 요금제에 따라 데이터 비용이 발생할 수 있습니다.</p>
-        </dialog>
-        <script>
-            const $ = id => document.getElementById(id);
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        사실·출처·조사 시점을 확인하고 활용합니다. 버튼 위치와 제공 기능은 계정·업데이트에 따라 달라질 수 있습니다.
+       </div>
+      </div>
+      <div class="week-summary" data-layout="pair-first" hidden="" id="week3">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         이미지 생성 조건 정하기
+        </h3>
+        <p>
+         이미지 요청에는
+         <strong>
+          대상·배경·스타일·구도·세부 조건
+         </strong>
+         을 넣습니다. 결과를 확인하면서 조건을 보완하고, 바꿀 부분과 유지할 부분을 구분합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          만들 대상과 사용 목적을 정합니다.
+         </li>
+         <li>
+          배경·스타일·구도와 필요한 세부 조건을 적습니다.
+         </li>
+         <li>
+          결과를 보고 수정할 부분을 구체적으로 설명합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         태풍을 설명하는 일기예보용 이미지를 만들어줘. 바다 위 태풍과 이동 경로가 보이도록 구성하고, 수업 자료에 사용할 수 있게 주요 요소를 명확하게 표현해줘.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w3_1" role="button" tabindex="0">
+          이미지 모델 선택
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         AI Studio에서 생성하고 수정하기
+        </h3>
+        <p>
+         Google AI Studio에서 이미지 생성 모델을 선택하고 준비한 프롬프트를 입력합니다. 모델에 따라 구도·글자·세부 표현이 달라질 수 있습니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          AI Studio에 접속해 이미지 생성 모델을 선택합니다.
+         </li>
+         <li>
+          프롬프트를 입력하고 결과를 확인합니다.
+         </li>
+         <li>
+          부족한 조건을 추가해 다시 요청합니다.
+         </li>
+        </ol>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           모델 선택
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           프롬프트 입력
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           생성
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           확인·수정
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w3_2" role="button" tabindex="0">
+          이미지 입력·결과
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         Arena에서 결과 비교하기
+        </h3>
+        <p>
+         같은 요청으로 생성된 두 이미지의
+         <strong>
+          요청 반영·구도·글자 정확성·세부 표현
+         </strong>
+         을 비교합니다. 수업 자료의 Battle Mode에서는 평가 후 모델 이름을 확인합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          로그인 후 이미지 비교 화면과 Battle Mode를 확인합니다.
+         </li>
+         <li>
+          같은 프롬프트로 두 결과를 생성합니다.
+         </li>
+         <li>
+          결과를 비교·평가한 뒤 모델 이름을 확인합니다.
+         </li>
+        </ol>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           같은 요청
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           두 결과 비교
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           평가
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           모델 확인
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w3_3" role="button" tabindex="0">
+          Arena 비교
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        모델 이름만으로 우열을 정하기보다, 내가 요청한 조건이 얼마나 반영되었는지 비교합니다.
+       </div>
+      </div>
+      <div class="week-summary" data-layout="first-wide" hidden="" id="week4">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         목적과 규칙을 프롬프트로 정리하기
+        </h3>
+        <p>
+         바이브 코딩은 원하는 기능과 모습을 말로 설명하고, AI가 만든 코드를 실행·수정하며 프로그램을 완성하는 방식입니다. 게임 실습에서는
+         <strong>
+          준비·진행·특별 규칙·승리 조건
+         </strong>
+         을 나누어 작성합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          사용자 수와 시작 화면을 정합니다.
+         </li>
+         <li>
+          차례·행동·이동·특별 규칙을 설명합니다.
+         </li>
+         <li>
+          승리·종료 조건을 정하고 빠진 조건을 AI에게 질문받습니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         내가 설명하는 게임 규칙을 프로그램 제작용 프롬프트로 정리해줘. 빠진 조건이나 모호한 규칙이 있으면 먼저 질문해줘.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w4_1" role="button" tabindex="0">
+          앱 제작 시작
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         AI Studio에서 제작하고 실행하기
+        </h3>
+        <p>
+         앱 제작 화면에 프롬프트를 입력하고, 생성된 프로그램을 미리보기에서 실행합니다. 게임 이름보다 구체적인 규칙과 동작을 설명합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          AI Studio의 Build 또는 New app을 엽니다.
+         </li>
+         <li>
+          제작 프롬프트를 입력해 생성합니다.
+         </li>
+         <li>
+          미리보기에서 버튼·차례·이동·승리 판정을 확인합니다.
+         </li>
+        </ol>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           규칙 설명
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           생성
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           실행
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w4_2" role="button" tabindex="0">
+          실행 미리보기
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         문제를 설명하고 반복 수정하기
+        </h3>
+        <p>
+         수정 요청에는
+         <strong>
+          문제가 발생한 상황·현재 결과·원하는 결과
+         </strong>
+         를 함께 적습니다. 문제를 하나씩 수정하고 기존 규칙도 다시 확인합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          문제가 발생한 동작을 다시 실행합니다.
+         </li>
+         <li>
+          현재 결과와 원하는 동작을 비교해 설명합니다.
+         </li>
+         <li>
+          수정 후 같은 상황과 다른 규칙을 확인합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         상대 말이 있는 칸에 도착해도 상대 말이 그대로 남아 있어. 상대 말을 출발 지점으로 보내줘. 다른 이동 규칙은 유지해줘.
+        </blockquote>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           문제 확인
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           수정 요청
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           재실행
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w4_3" role="button" tabindex="0">
+          수정 요청
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        AI가 만든 프로그램은 직접 실행해 확인합니다. 요청한 규칙이 빠졌거나 다르게 작동하면 구체적으로 수정합니다.
+       </div>
+      </div>
+      <div class="week-summary" data-layout="stack" hidden="" id="week5">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         문서와 발표자료로 활용하기
+        </h3>
+        <p>
+         Gemini Canvas에서 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게
+         <strong>
+          제목·구성·분량
+         </strong>
+         을 조정한 뒤 결과를 활용합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          Canvas에서 자료와 원하는 형식을 입력합니다.
+         </li>
+         <li>
+          생성된 내용의 사실·구성·분량을 확인합니다.
+         </li>
+         <li>
+          수정 요청 후 제공되는 내보내기 옵션을 확인합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         이 자료를 초보자용 안내문으로 정리해줘. 제목, 사용 순서, 주의할 점으로 나누고 어려운 표현은 쉽게 바꿔줘.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w5_1" role="button" tabindex="0">
+          Canvas 문서 작업
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         더미 데이터를 생성하고 확인하기
+        </h3>
+        <p>
+         더미 데이터는 연습용 가짜 데이터입니다.
+         <strong>
+          행 개수·열 이름·값의 범위·출력 형식
+         </strong>
+         을 지정합니다. CSV는 표 데이터를 담는 텍스트 형식입니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          AI에 데이터 조건과 CSV 형식을 요청합니다.
+         </li>
+         <li>
+          Excel이나 Sheets로 옮겨 표로 확인합니다.
+         </li>
+         <li>
+          행·열 개수와 한글·숫자를 검토합니다. 한글이 깨지면 읽는 문자 방식이 UTF-8인지 확인합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         실제 개인정보가 아닌 가상의 고객 데이터 20개를 만들어줘. 열은 이름, 나이, 지역, 구매상품, 구매금액으로 구성하고 CSV 형식으로 보여줘. 구매금액은 5000~100000 사이의 정수로 쓰고 숫자 안에는 쉼표를 넣지 마.
+        </blockquote>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           조건 지정
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           생성
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           표로 확인
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           오류 수정
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w5_2" role="button" tabindex="0">
+          CSV 결과 확인
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         작업 도구와 AI 실험 기능 살펴보기
+        </h3>
+        <p>
+         Docs는 문서, Sheets는 표, Slides는 발표자료를 다룹니다. Google Labs와 Workspace Experiments에서 제공되는 실험 기능과 이용 조건을 확인합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          사용할 문서·표·발표 도구를 정합니다.
+         </li>
+         <li>
+          실험 기능의 목적과 계정별 참여 조건을 확인합니다.
+         </li>
+         <li>
+          제공되는 기능을 연습용 자료로 체험합니다.
+         </li>
+        </ol>
+        <p>
+         <span class="hint" data-help="w5_3" role="button" tabindex="0">
+          AI 실험 기능
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        연습에는 가상의 데이터를 사용합니다. AI가 만든 표도 요청한 개수·열·값을 직접 확인합니다.
+       </div>
+      </div>
+      <div class="week-summary" data-layout="pair-first" hidden="" id="week6">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         Docs에서 작성·요약·수정하기
+        </h3>
+        <p>
+         문서의 목적과 독자를 알려주고 초안 작성·핵심 요약·문장 다듬기를 요청합니다. 생성된 문장을 읽고 사실과 표현을 확인합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          문서를 열고 제공되는 Gemini 기능을 엽니다.
+         </li>
+         <li>
+          목적·독자·분량을 포함해 요청합니다.
+         </li>
+         <li>
+          답변을 검토하고 필요한 내용만 반영합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         이 문서를 처음 읽는 사람도 이해할 수 있도록 핵심 내용을 5개로 요약해줘. 어려운 표현은 쉽게 바꾸고 원문에 없는 내용은 추가하지 마.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w6_1" role="button" tabindex="0">
+          Docs AI 사용
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         Slides에서 발표 구성 다듬기
+        </h3>
+        <p>
+         발표 대상·시간·장수를 지정해 슬라이드 구성과 내용을 요청합니다. 글의 양과 이미지가 발표 목적에 맞는지 확인합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          발표자료를 열고 Gemini에 구성·요약 등을 요청합니다.
+         </li>
+         <li>
+          생성된 슬라이드나 내용을 검토합니다.
+         </li>
+         <li>
+          필요한 부분을 반영하고 표현과 배치를 조정합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         이 자료를 성인 초보자 대상의 5분 발표로 구성해줘. 각 슬라이드는 제목과 핵심 내용 3개 이내로 정리해줘.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w6_2" role="button" tabindex="0">
+          Slides AI 사용
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         Sheets에서 표 생성·정리하기
+        </h3>
+        <p>
+         필요한 열과 조건을 설명해 표를 만들거나 기존 데이터의 요약·정리를 요청합니다.
+         <strong>
+          숫자·날짜·범위·계산 결과
+         </strong>
+         를 검토합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          시트를 열고 Gemini에 필요한 작업을 설명합니다.
+         </li>
+         <li>
+          사용한 데이터 범위와 결과를 확인합니다.
+         </li>
+         <li>
+          검토한 결과를 반영하고 추가 수정을 요청합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         이 표를 지역별로 정리하고 구매금액의 합계를 비교해줘. 어떤 데이터 범위를 사용했는지도 함께 설명해줘.
+        </blockquote>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           문서 열기
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           AI 요청
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           결과 검토
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           반영·수정
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w6_3" role="button" tabindex="0">
+          Sheets AI 사용
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        AI 기능의 제공 여부는 계정과 이용 조건에 따라 다를 수 있습니다. 결과를 문서에 반영하기 전에 내용을 확인합니다.
+       </div>
+      </div>
+      <div class="week-summary" data-layout="first-wide" hidden="" id="week7">
+       <article class="card">
+        <h3>
+         <span class="num">
+          01
+         </span>
+         주제에 맞는 자료 준비하기
+        </h3>
+        <p>
+         제공 자료에서 다루는 Gemini Notebook은 내 자료를 중심으로 질문하고 정리하는 작업 공간입니다. 자료의 양보다
+         <strong>
+          질문과의 관련성
+         </strong>
+         이 중요합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          새 노트북을 만들고 주제가 드러나는 이름을 정합니다.
+         </li>
+         <li>
+          PDF·Drive 문서·웹페이지·텍스트 등을 소스로 추가합니다.
+         </li>
+         <li>
+          등록된 자료와 질문에 사용할 선택 범위를 확인합니다.
+         </li>
+        </ol>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           주제 정하기
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           자료 추가
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           범위 선택
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w7_1" role="button" tabindex="0">
+          새 노트북과 자료 추가
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          02
+         </span>
+         선택한 자료 안에서 질문하기
+        </h3>
+        <p>
+         요약·비교·공통점·쟁점을 요청합니다. 답변 범위를 선택한 자료 안으로 제한하고 자료에 없는 내용은 구분하도록 지시합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          질문에 필요한 소스를 선택합니다.
+         </li>
+         <li>
+          원하는 작업과 답변 형식을 입력합니다.
+         </li>
+         <li>
+          누락된 내용과 다른 해석을 추가 질문합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         선택한 자료 안에서만 공통 내용과 차이점을 정리해줘. 각 항목의 근거를 표시하고, 자료에서 확인할 수 없는 내용은 확인 불가라고 적어줘.
+        </blockquote>
+        <p>
+         <span class="hint" data-help="w7_2" role="button" tabindex="0">
+          자료 기반 질문
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <article class="card">
+        <h3>
+         <span class="num">
+          03
+         </span>
+         인용과 원문에서 근거 확인하기
+        </h3>
+        <p>
+         인용 표시를 열어 원문과 비교합니다.
+         <strong>
+          확인된 사실·AI의 해석·추가 제안
+         </strong>
+         을 구분해 결론을 정리합니다.
+        </p>
+        <h4>
+         사용 순서
+        </h4>
+        <ol class="steps">
+         <li>
+          답변의 인용 번호를 선택합니다.
+         </li>
+         <li>
+          소스 보기에서 원문이 결론을 뒷받침하는지 확인합니다.
+         </li>
+         <li>
+          근거와 한계를 적고 필요한 부분을 다시 질문합니다.
+         </li>
+        </ol>
+        <h4>
+         예제 프롬프트
+        </h4>
+        <blockquote>
+         각 결론을 뒷받침하는 원문 근거를 보여줘. 사실과 해석, 개선 제안을 구분해서 정리해줘.
+        </blockquote>
+        <p>
+         <strong class="improvement-flow">
+          <span>
+           질문
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           인용·원문 확인
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           추가 질문
+          </span>
+          <span aria-hidden="true" class="flow-arrow">
+           →
+          </span>
+          <span>
+           결론
+          </span>
+         </strong>
+        </p>
+        <p>
+         <span class="hint" data-help="w7_3" role="button" tabindex="0">
+          인용·원문 확인
+          <span class="icon-tail">
+           화면
+           <span aria-hidden="true" class="help-icon">
+            🔍
+           </span>
+          </span>
+         </span>
+         으로 사용 위치를 확인합니다.
+        </p>
+       </article>
+       <div class="note">
+        <strong>
+         기억할 점
+        </strong>
+        <br/>
+        자료에 없는 내용을 추측으로 채우지 않습니다. 웹 링크 수집 도구는 자료 준비를 돕는 보조 수단으로 활용합니다.
+       </div>
+      </div>
+      <div hidden="" id="other">
+      </div>
+     </div>
+     <aside class="resource">
+      <h3>
+       자료 및 화면 안내
+      </h3>
+      <div id="resourceLinks">
+      </div>
+      <small>
+       요약 PDF 링크는 추후 연결합니다.
+      </small>
+      <hr/>
+      <p>
+       <strong>
+        안내 표시를 확인하세요
+       </strong>
+      </p>
+      <small>
+       PC: 마우스 오버로 버튼 주변을 미리 보고, 클릭으로 이미지 또는 영상과 설명을 엽니다.
+       <br/>
+       휴대폰: 터치로 이미지 또는 영상 안내를 엽니다.
+       <br/>
+       🔍 점선 밑줄: 화면 설명
+       <br/>
+       🔗 파란 밑줄: 웹사이트 열기
+       <br/>
+       로그인과 ＋ 버튼은 정지 이미지로 안내합니다. 나머지 항목은 준비된 영상으로 안내합니다.
+      </small>
+      <details hidden="" id="captureDetails">
+       <summary>
+        필요한 캡처 목록
+       </summary>
+       <ol class="capture-list" id="captureList">
+       </ol>
+      </details>
+     </aside>
+    </div>
+    <div class="footer">
+     <span id="footerText">
+      현재 선택 · 2주차
+     </span>
+     <div class="nav">
+      <button id="prev">
+       ← 이전 주차
+      </button>
+      <button id="next">
+       다음 주차 →
+      </button>
+     </div>
+    </div>
+   </section>
+   <noscript>
+    주차 전환과 화면 안내는 JavaScript를 지원하는 브라우저에서 사용할 수 있습니다. 위 2주차 본문은 그대로 읽을 수 있습니다.
+   </noscript>
+  </main>
+  <div class="tooltip" hidden="" id="tooltip">
+  </div>
+  <dialog aria-labelledby="modalTitle" id="dialog">
+   <div class="modal-head">
+    <div>
+     <span class="badge" id="modalId">
+     </span>
+     <h3 id="modalTitle">
+     </h3>
+    </div>
+    <button aria-label="안내 닫기" class="close" id="close">
+     닫기 ×
+    </button>
+   </div>
+   <div class="placeholder full" id="fullFrame">
+   </div>
+   <p id="modalDescription">
+   </p>
+   <div class="note" id="modalMediaNote">
+   </div>
+   <p class="modal-data-notice" hidden="" id="modalDataNotice">
+    모바일 데이터로 이미지·영상을 불러오면 요금제에 따라 데이터 비용이 발생할 수 있습니다.
+   </p>
+  </dialog>
+  <script>
+   const $ = id => document.getElementById(id);
             const help = {
                 login: ['2-01', 'Google 계정으로 로그인', '로그인 버튼과 Google로 계속 선택 화면', 'ChatGPT 화면 오른쪽 상단의 로그인 버튼을 누른 뒤, 로그인 창에서 Google 계정으로 계속하기를 선택합니다. 사용할 Google 계정을 확인합니다.'],
                 send: ['2-02', '질문 입력과 전송', '입력창과 전송 버튼', '질문을 입력한 뒤 전송 버튼을 누릅니다. 입력창과 버튼의 위치를 주변 화면과 함께 확인합니다.'],
@@ -2114,6 +3256,6 @@
             new ResizeObserver(layout).observe($('shell'));
             render(2);
             layout();
-        </script>
-    </body>
+  </script>
+ </body>
 </html>
