@@ -1380,6 +1380,39 @@
                     flex-basis: 100%;
                 }
             }
+            .week6-preparation { margin-bottom: 24px; }
+            .week6-preparation[hidden] { display: none; }
+            .download-wrap { position: relative; display: inline; }
+            .material-download { overflow-wrap: anywhere; }
+            .download-feedback {
+                position: absolute;
+                bottom: calc(100% + 10px);
+                left: 0;
+                width: max-content;
+                max-width: min(280px, 70vw);
+                padding: 7px 10px;
+                border-radius: 8px;
+                background: #252525;
+                color: white;
+                font-size: 12px;
+                line-height: 1.5;
+                overflow-wrap: anywhere;
+                pointer-events: none;
+                opacity: 0;
+                transform: translateY(4px);
+                transition: opacity .15s, transform .15s;
+                z-index: 10;
+            }
+            .download-feedback::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                left: 14px;
+                border: 5px solid transparent;
+                border-top-color: #252525;
+            }
+            .download-feedback.is-visible { opacity: 1; transform: translateY(0); }
+
             #week1 .course-plan-document {
                 display: block;
                 width: 100%;
@@ -2163,7 +2196,7 @@
 </article>
 <div class="note"><strong>기억할 점</strong><br/>AI가 만든 프로그램은 직접 실행해 확인합니다. 요청한 규칙이 빠졌거나 다르게 작동하면 구체적으로 수정합니다.<br/>구체적인 규칙을 설명하기 어렵다면, AI에게 프롬프트를 문의하여 나온 결과를 활용합시다.<br/>표, 목록, 단계별 설명 등 원하는 결과의 형태도 함께 요청하면, 활용하기 좋은 답변을 받을 수 있습니다.</div></div>
 <div class="week-summary" data-layout="stack" id="week5" hidden>
-<article class="card"><h3><span class="num">01</span>문서와 발표자료로 활용하기</h3><p>Gemini의 Canvas 기능을 이용해 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게 <strong>제목·구성·분량</strong>을 조정한 뒤 결과를 활용합니다.</p><h4>사용 순서</h4>
+<article class="card"><h3><span class="num">01</span>문서와 발표자료로 활용하기</h3><p>Gemini의 Canvas 기능을 이용해 내용을 작성·정리하고 수정 요청을 이어갑니다. 목적에 맞게 <strong>제목·구성·분량</strong>을 조정한 뒤 결과를 활용합니다.<br/>Canvas 기능을 사용하기 위해서는 로그인이 필요합니다.</p><h4>사용 순서</h4>
 <ol class="steps"><li><a class="service-link" href="https://gemini.google.com/" rel="noopener noreferrer" target="_blank"><span class="icon-tail">Gemini <span aria-hidden="true">🔗</span></span></a>의 입력창 좌측의 <span class="hint" data-help="w5_1" role="button" tabindex="0">+ 버튼을 눌러 Canvas 기능을 활성화 한 <span class="icon-tail">뒤<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>, 생성하고자 하는 자료와 원하는 형식을 입력합니다.</li><li><span class="hint" data-help="w5_4" role="button" tabindex="0">생성된 <span class="icon-tail">내용<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>의 사실·구성·분량을 확인합니다.</li><li>수정 요청 후 제공되는 <span class="hint" data-help="w5_5" role="button" tabindex="0">내보내기 옵션을 <span class="icon-tail">확인<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>합니다.</li></ol>
 <div class="prompt-heading">
     <h4>예제 프롬프트 (문서 - Docs 생성)</h4>
@@ -2222,18 +2255,30 @@
     </p>
 </article>
 <div class="note"><strong>기억할 점</strong><br/>연습에는 가상의 데이터를 사용합니다. AI가 만든 표도 요청한 개수·열·값을 직접 확인합니다.</div></div>
+<section class="card week6-preparation" id="week6Preparation" hidden>
+    <h3>실습 자료 준비하기</h3>
+    <p>전체 자료를 한 번에 내려받거나, 각 항목의 파일을 개별로 내려받아 실습합니다.</p>
+    <p><span class="download-wrap"><a class="service-link material-download" href="assets/week6/practice-materials.zip" download="생성된_더미데이터_모음.zip" data-file-name="practice-materials.zip" data-display-name="생성된_더미데이터_모음.zip">생성된_더미데이터_모음.zip <span aria-hidden="true">🔗</span></a><span class="download-feedback" role="status" aria-live="polite"></span></span></p>
+    <p>ZIP 파일은 압축을 풀어 사용합니다. 개별 파일은 Google Drive에 업로드한 뒤 Docs·Slides·Sheets로 열어 주세요.</p>
+</section>
 <div class="week-summary" data-layout="pair-first" id="week6" hidden>
-<article class="card"><h3><span class="num">01</span>Docs에서 작성·요약·수정하기</h3><p>문서의 목적과 독자를 알려주고 초안 작성·핵심 요약·문장 다듬기를 요청합니다. 생성된 문장을 읽고 사실과 표현을 확인합니다.</p><h4>사용 순서</h4>
+<article class="card"><h3><span class="num">01</span>Docs에서 작성·요약·수정하기</h3>
+<p>문서 작성·요약·수정을 연습할 매장 운영 안내문입니다.<br/><span class="download-wrap"><a class="service-link material-download" href="assets/week6/store-guide.docx" download="매장_운영_안내문.docx" data-file-name="store-guide.docx" data-display-name="매장_운영_안내문.docx">매장_운영_안내문.docx <span aria-hidden="true">🔗</span></a><span class="download-feedback" role="status" aria-live="polite"></span></span></p>
+<p>문서의 목적과 독자를 알려주고 초안 작성·핵심 요약·문장 다듬기를 요청합니다. 생성된 문장을 읽고 사실과 표현을 확인합니다.</p><h4>사용 순서</h4>
 <ol class="steps"><li>문서를 열고 제공되는 Gemini 기능을 엽니다.</li><li>목적·독자·분량을 포함해 요청합니다.</li><li>답변을 검토하고 필요한 내용만 반영합니다.</li></ol>
 <div class="prompt-heading"><h4>예제 프롬프트</h4><div class="prompt-copy-toolbar"><button class="prompt-copy-button" type="button" data-prompt-copy="example-prompt-8" aria-label="예제 프롬프트 복사">복사 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><span class="prompt-copy-feedback" role="status" aria-live="polite"></span></div></div>
 <blockquote class="prompt-copy-prompt"><div id="example-prompt-8" class="prompt-text">이 문서를 처음 읽는 사람도 이해할 수 있도록 핵심 내용을 5개로 요약해줘. 어려운 표현은 쉽게 바꾸고 원문에 없는 내용은 추가하지 마.</div></blockquote>
 <p><span class="hint" data-help="w6_1" role="button" tabindex="0">Docs AI 사용 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">02</span>Slides에서 발표 구성 다듬기</h3><p>발표 대상·시간·장수를 지정해 슬라이드 구성과 내용을 요청합니다. 글의 양과 이미지가 발표 목적에 맞는지 확인합니다.</p><h4>사용 순서</h4>
+<article class="card"><h3><span class="num">02</span>Slides에서 발표 구성 다듬기</h3>
+<p>발표 구성과 문구를 다듬을 직원 교육용 발표자료입니다.<br/><span class="download-wrap"><a class="service-link material-download" href="assets/week6/staff-training.pptx" download="직원_교육용_발표자료.pptx" data-file-name="staff-training.pptx" data-display-name="직원_교육용_발표자료.pptx">직원_교육용_발표자료.pptx <span aria-hidden="true">🔗</span></a><span class="download-feedback" role="status" aria-live="polite"></span></span></p>
+<p>발표 대상·시간·장수를 지정해 슬라이드 구성과 내용을 요청합니다. 글의 양과 이미지가 발표 목적에 맞는지 확인합니다.</p><h4>사용 순서</h4>
 <ol class="steps"><li>발표자료를 열고 Gemini에 구성·요약 등을 요청합니다.</li><li>생성된 슬라이드나 내용을 검토합니다.</li><li>필요한 부분을 반영하고 표현과 배치를 조정합니다.</li></ol>
 <div class="prompt-heading"><h4>예제 프롬프트</h4><div class="prompt-copy-toolbar"><button class="prompt-copy-button" type="button" data-prompt-copy="example-prompt-9" aria-label="예제 프롬프트 복사">복사 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><span class="prompt-copy-feedback" role="status" aria-live="polite"></span></div></div>
 <blockquote class="prompt-copy-prompt"><div id="example-prompt-9" class="prompt-text">이 자료를 성인 초보자 대상의 5분 발표로 구성해줘. 각 슬라이드는 제목과 핵심 내용 3개 이내로 정리해줘.</div></blockquote>
 <p><span class="hint" data-help="w6_2" role="button" tabindex="0">Slides AI 사용 <span class="icon-tail">화면<span aria-hidden="true" class="help-icon"> 🔍</span></span></span>으로 사용 위치를 확인합니다.</p></article>
-<article class="card"><h3><span class="num">03</span>Sheets에서 표 생성·정리하기</h3><p>필요한 열과 조건을 설명해 표를 만들거나 기존 데이터의 요약·정리를 요청합니다. <strong>숫자·날짜·범위·계산 결과</strong>를 검토합니다.</p><h4>사용 순서</h4>
+<article class="card"><h3><span class="num">03</span>Sheets에서 표 생성·정리하기</h3>
+<p>표 정리와 분석을 연습할 가상의 판매 기록입니다.<br/><span class="download-wrap"><a class="service-link material-download" href="assets/week6/sales-records.csv" download="가상_판매_기록.CSV" data-file-name="sales-records.csv" data-display-name="가상_판매_기록.CSV">가상_판매_기록.CSV <span aria-hidden="true">🔗</span></a><span class="download-feedback" role="status" aria-live="polite"></span></span></p>
+<p>필요한 열과 조건을 설명해 표를 만들거나 기존 데이터의 요약·정리를 요청합니다. <strong>숫자·날짜·범위·계산 결과</strong>를 검토합니다.</p><h4>사용 순서</h4>
 <ol class="steps"><li>시트를 열고 Gemini에 필요한 작업을 설명합니다.</li><li>사용한 데이터 범위와 결과를 확인합니다.</li><li>검토한 결과를 반영하고 추가 수정을 요청합니다.</li></ol>
 <div class="prompt-heading"><h4>예제 프롬프트</h4><div class="prompt-copy-toolbar"><button class="prompt-copy-button" type="button" data-prompt-copy="example-prompt-10" aria-label="예제 프롬프트 복사">복사 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button><span class="prompt-copy-feedback" role="status" aria-live="polite"></span></div></div>
 <blockquote class="prompt-copy-prompt"><div id="example-prompt-10" class="prompt-text">이 표를 지역별로 정리하고 구매금액의 합계를 비교해줘. 어떤 데이터 범위를 사용했는지도 함께 설명해줘.</div></blockquote>
@@ -2649,6 +2694,7 @@
                 selected = n;
                 $('ai-overview').hidden = n !== 0;
                 $('weekBody').hidden = n === 0;
+                $('week6Preparation').hidden = n !== 6;
                 // Keep the reusable capture checklist hidden for week 2.
                 $('captureDetails').hidden = n === 2;
                 buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(i + 1 === n)));
@@ -3076,5 +3122,44 @@
                 });
             })();
         </script>
-    </body>
+            <script>
+            (() => {
+                const desktopPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+                document.querySelectorAll('.material-download').forEach(link => {
+                    const feedback = link.parentElement.querySelector('.download-feedback');
+                    let timer;
+                    let downloading = false;
+                    const hide = () => {
+                        feedback.classList.remove('is-visible');
+                        feedback.textContent = '';
+                    };
+                    const show = text => {
+                        feedback.textContent = text;
+                        feedback.classList.add('is-visible');
+                    };
+                    link.addEventListener('mouseenter', () => {
+                        if (desktopPointer.matches && !downloading) show(link.dataset.fileName);
+                    });
+                    link.addEventListener('mouseleave', () => {
+                        if (!downloading) hide();
+                    });
+                    link.addEventListener('focus', () => {
+                        if (desktopPointer.matches && !downloading) show(link.dataset.fileName);
+                    });
+                    link.addEventListener('blur', () => {
+                        if (!downloading) hide();
+                    });
+                    link.addEventListener('click', () => {
+                        clearTimeout(timer);
+                        downloading = true;
+                        show(desktopPointer.matches ? '다운로드' : `${link.dataset.displayName} 다운로드`);
+                        timer = setTimeout(() => {
+                            downloading = false;
+                            hide();
+                        }, 2000);
+                    });
+                });
+            })();
+        </script>
+</body>
 </html>
