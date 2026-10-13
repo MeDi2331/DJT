@@ -2447,13 +2447,13 @@
         "4-02",
         "실행 미리보기",
         "생성된 앱과 Preview 화면",
-        "화면 자료는 추후 추가합니다. Google AI Studio의 Build 또는 New app을 엽니다. 제작 프롬프트를 입력해 생성합니다. 미리보기에서 버튼·차례·이동·승리 판정을 확인합니다."
+        "Google AI Studio의 Build 또는 New app을 엽니다. 제작 프롬프트를 입력해 생성합니다. 미리보기에서 버튼·차례·이동·승리 판정을 확인합니다."
     ],
     "w4_3": [
         "4-03",
         "수정 요청",
         "문제 설명 입력과 수정 결과",
-        "화면 자료는 추후 추가합니다. 문제가 발생한 동작을 다시 실행합니다. 현재 결과와 원하는 동작을 비교해 설명하여 수정 요청합니다. 수정 후 같은 상황과 다른 규칙을 확인합니다."
+        "문제가 발생한 동작을 다시 실행합니다. 현재 결과와 원하는 동작을 비교해 설명하여 수정 요청합니다. 수정 후 같은 상황과 다른 규칙을 확인합니다."
     ],
     "w5_1": [
         "5-01",
@@ -2904,10 +2904,6 @@
 
             media.w3_5.type = 'image';
 
-            media.w4_1.type = 'image';
-            media.w4_1.preview = 'assets/week4/build-preview.png';
-            media.w4_1.image = 'assets/week4/build-full.png';
-
 
             // Week 3: focused hover captures and full-screen click images.
             media.w3_1.type = 'image';
@@ -2932,6 +2928,31 @@
             media.w3_3.preview = 'assets/week3/w3_3-preview.png';
             media.w3_3.previewSteps = [["assets/week3/w3_3-preview-1.png", "① 평가 후 공개된 왼쪽 모델"], ["assets/week3/w3_3-preview-2.png", "② 평가 후 공개된 오른쪽 모델"]];
             help.w3_6[3] = '전달된 화면은 같은 요청으로 두 이미지가 생성된 뒤의 상태입니다. 위쪽 요청과 두 결과를 비교하고, 아래쪽 평가 버튼을 확인합니다. 입력 전 화면은 포함되어 있지 않습니다.';
+
+
+            // Week 4: focused hover previews and full-screen images.
+            media.w4_1.type = 'image';
+            media.w4_1.preview = 'assets/week4/w4_1-preview.png';
+            media.w4_1.image = 'assets/week4/w4_1-full.png';
+            media.w4_1.previewSteps = [["assets/week4/w4_1-preview.png", "New app 선택 위치"]];
+            media.w4_4.type = 'image';
+            media.w4_4.preview = 'assets/week4/w4_4-preview.png';
+            media.w4_4.image = 'assets/week4/w4_4-full.png';
+            media.w4_4.previewSteps = [["assets/week4/w4_4-preview.png", "앱 제작 요청 내용"]];
+            media.w4_2.type = 'image';
+            media.w4_2.preview = 'assets/week4/w4_2-preview.png';
+            media.w4_2.image = 'assets/week4/w4_2-full.png';
+            media.w4_2.previewSteps = [["assets/week4/w4_2-preview.png", "Preview 메뉴와 차례·타이머·실행 버튼"]];
+            media.w4_3.type = 'image';
+            media.w4_3.preview = 'assets/week4/w4_3-preview.png';
+            media.w4_3.image = 'assets/week4/w4_3-full.png';
+            media.w4_3.previewSteps = [["assets/week4/w4_3-preview.png", "현재 문제와 원하는 동작을 설명한 요청"]];
+            media.w4_3.previewSteps.push(['assets/week4/w4_3-after-preview.png', '수정 완료 · Preview 메뉴와 시작 모드 선택 화면']);
+            media.w4_3.steps = [['assets/week4/w4_3-full.png', '① 문제와 원하는 동작을 설명한 수정 요청'], ['assets/week4/w4_3-after-full.png', '② 수정 완료 · 시작 시 대국 모드 선택']];
+            help.w4_1[3] = 'AI Studio 왼쪽 메뉴에서 New app을 선택해 앱 제작을 시작합니다.';
+            help.w4_4[3] = '왼쪽 대화 영역의 제작 요청을 확인합니다. 이 캡처는 요청을 보낸 뒤 앱을 생성하는 중인 화면입니다.';
+            help.w4_2[3] = '오른쪽 Preview에서 생성된 오목 화면을 확인합니다. 차례·타이머·버튼이 표시되어 있으며, 실제 실행하면서 각 규칙이 작동하는지 확인합니다.';
+            help.w4_3[3] = '① 진행 중 모드 변경 문제와 원하는 시작 방식을 설명한 요청입니다. ② 수정 완료 화면에는 대국 상대·승리 규칙·제한 시간을 먼저 선택하는 창이 표시됩니다. 수정 이후 같은 동작을 다시 실행해 확인합니다.';
 
             function pendingFrame(container, h, message) {
                 container.replaceChildren();
@@ -3001,7 +3022,7 @@
                             (key === 'research' ? ' 심층 리서치는 완료까지 시간이 걸릴 수 있습니다. 이 영상은 대기 중 녹화를 일시정지하여 일부 대기 구간을 생략했습니다.' : '')
                         : '사용 방법 영상은 준비 중입니다. 아래 설명을 확인하세요.';
                 container.classList.remove('placeholder');
-                if (key === 'w5_1' && item.steps) {
+                if ((key === 'w5_1' || key === 'w4_3') && item.steps) {
                     container.replaceChildren();
                     item.steps.forEach(([path, label]) => {
                         const step = document.createElement('div');
