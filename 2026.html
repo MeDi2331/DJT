@@ -152,7 +152,16 @@
                 background: transparent;
                 padding: 0;
                 min-width: 0;
-                color: #587084
+                color: #587084;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: flex-start
+            }
+
+            .week > .dot {
+                flex: 0 0 auto;
+                margin: 0 auto
             }
 
             .dot {
@@ -176,7 +185,11 @@
             .label {
                 font-size: 12px;
                 display: block;
-                margin-top: 8px
+                margin-top: 8px;
+                line-height: 1.5;
+                padding: 0 3px;
+                word-break: keep-all;
+                overflow-wrap: anywhere
             }
 
             .path {
@@ -1800,6 +1813,37 @@
 #week10 .week10-disclosure > summary { padding: 22px 24px; font-weight: 750; cursor: pointer; touch-action: manipulation; }
 #week10 .week10-disclosure > summary:focus-visible { outline: 3px solid #AD7421; outline-offset: 4px; }
 #week10 .week10-disclosure-body { padding: 0 24px 24px; }
+
+#weekBoard [hidden]{display:none!important}
+/* Week board pilot: scoped styles, existing lesson panels remain unchanged. */
+.board-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.board-tabs button{font:inherit;font-weight:750;border:0;background:transparent;color:var(--muted);padding:8px 4px;cursor:pointer}.board-tabs button[aria-pressed=true]{color:var(--ink);box-shadow:0 2px var(--ink)}
+.content.board-mode > :not(#weekBoard){display:none!important}#weekBoard[hidden]{display:none!important}#weekBoard{padding:0;min-width:0}.board-top,.board-tools,.board-actions{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.board-top h2{margin:12px 0}.board-caption{color:var(--muted);font-size:14px;line-height:1.7}.board-tools{margin:24px 0 16px}.board-tools input{flex:1;min-width:150px}.board-control,#boardForm input,#boardForm textarea,#boardForm select{font:inherit;border:1px solid var(--line);border-radius:8px;padding:11px 13px;background:white;color:var(--ink);box-sizing:border-box}.board-btn{font:inherit;cursor:pointer;padding:11px 17px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);font-weight:650}.board-btn.primary{background:#315a48;color:white;border-color:#315a48}.board-table{width:100%;border-collapse:collapse;table-layout:fixed}.board-table th,.board-table td{text-align:left;padding:16px 10px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.board-table th{font-size:14px;color:var(--muted);background:#f4f6f3}.board-table th:first-child{width:60%}.board-post-title{font:inherit;text-align:left;border:0;background:none;color:var(--ink);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:4px}.board-tag{font-size:12px;color:#315a48;display:block;margin-bottom:5px}.board-empty{text-align:center;padding:48px 12px;color:var(--muted)}#boardForm{display:grid;gap:18px;margin-top:24px}#boardForm label{display:grid;gap:8px;font-weight:650}#boardForm input,#boardForm textarea,#boardForm select{width:100%;font-weight:400}#boardForm textarea{min-height:220px;resize:vertical}#boardDetail{padding-top:22px}#boardDetailBody{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85;margin:28px 0}#boardDetail h3{overflow-wrap:anywhere}#boardStatus{min-height:24px;color:#315a48;font-size:14px}#boardDetailLink{overflow-wrap:anywhere}.board-actions{justify-content:flex-end;margin:20px 0}.board-btn:focus-visible,.board-post-title:focus-visible,.board-tabs button:focus-visible{outline:3px solid #AD7421;outline-offset:3px}@media(max-width:600px){.board-table th:first-child{width:52%}.board-table th,.board-table td{padding:12px 6px;font-size:14px}.board-tabs{gap:4px}.board-tabs button{font-size:15px}.board-tools{align-items:stretch}.board-tools input{width:100%}}
+
+            .nodes { row-gap: 8px; }
+            .nodes > .week {
+                display: grid;
+                grid-template-rows: subgrid;
+                row-gap: 8px;
+                padding-bottom: 24px;
+            }
+            .week > .week-tools {
+                display: block;
+                align-self: end;
+                padding: 0 3px;
+                font-size: 11px;
+                line-height: 1.5;
+                font-weight: 650;
+                color: #315a48;
+                word-break: keep-all;
+                overflow-wrap: anywhere;
+            }
+            .week > .label { margin-top: 0; align-self: start; }
+
+            /* Leave room outside labels and between rows for roadmap turns. */
+            .map[data-columns="8"] { padding-inline: 40px; }
+            .map[data-columns="4"] { padding-inline: 26px; }
+            .map[data-columns="8"] .week,
+            .map[data-columns="4"] .week { padding-bottom: 56px; }
 </style>
     </head>
     <body>
@@ -1828,7 +1872,7 @@
             </header>
             <section class="index">
                 <div class="index-head">
-                    <strong>주차별 학습 흐름</strong>
+                    <div class="board-tabs" role="group" aria-label="학습 흐름과 게시판 전환"><button id="learningMode" type="button" aria-pressed="true">주차별 학습 흐름</button><span aria-hidden="true">·</span><button id="boardMode" type="button" aria-pressed="false">주차별 게시판</button></div>
                 </div>
                 <div class="map" id="map">
                     <svg aria-hidden="true" class="path" id="path">
@@ -1836,13 +1880,21 @@
                     <div class="nodes" id="nodes">
                     </div>
                 </div>
-                <div class="legend">
-                    <span>01 시작</span>
-                    <span>16 도착</span>
-                    <span>선을 따라 주차가 이어집니다</span>
-                </div>
+
             </section>
             <section aria-live="polite" class="content">
+<div id="weekBoard" hidden>
+ <div class="board-top"><div><span class="badge" id="boardWeekBadge">WEEK 01 · BOARD</span><h2 id="boardHeading">1주차 게시판</h2></div><button class="board-btn" id="boardBackToLesson" type="button">학습 내용 보기</button></div>
+ <p class="board-caption" id="boardIntro">실습 결과를 올리고 질문이나 활용 방법을 나누는 공간입니다.</p>
+ <p class="board-caption">시범 운영 · 글은 이 브라우저에만 저장되며 다른 사람에게 공유되지 않습니다.</p>
+ <div id="boardUnavailable" class="board-empty" hidden>현재는 1주차 게시판만 시범 운영합니다.<br/><button class="board-btn" id="boardGoWeek1" type="button">1주차 게시판 보기</button></div>
+ <div id="boardPilot">
+  <div id="boardListView"><div class="board-tools"><input class="board-control" id="boardSearch" type="search" placeholder="제목·내용·작성자 검색" aria-label="게시글 검색"/><button class="board-btn primary" id="boardWrite" type="button">글쓰기</button></div><p class="board-caption" id="boardCount"></p><table class="board-table"><thead><tr><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th></tr></thead><tbody id="boardRows"></tbody></table><p class="board-empty" id="boardEmpty">아직 등록된 글이 없습니다.<br/>첫 실습 결과나 질문을 남겨보세요.</p></div>
+  <form id="boardForm" hidden><h3 id="boardFormHeading">글쓰기</h3><label>분류<select id="boardCategory"><option>실습 결과</option><option>질문</option><option>정보 공유</option><option>자유 이야기</option></select></label><label>제목<input id="boardPostTitle" required maxlength="100" placeholder="공유할 내용을 짧게 적어주세요"/></label><label>작성자<input id="boardAuthor" required maxlength="30" placeholder="이름 또는 별명" autocomplete="nickname"/></label><label>내용<textarea id="boardBody" required maxlength="20000" placeholder="만든 결과, 사용한 방법, 궁금한 점 등을 적어주세요"></textarea></label><label>결과물 링크 (선택)<input id="boardLink" type="url" placeholder="https://"/><small class="board-caption">공유할 수 있는 웹페이지나 파일 링크를 넣어주세요.</small></label><div class="board-actions"><button class="board-btn" id="boardCancel" type="button">취소</button><button class="board-btn primary" type="submit">저장</button></div></form>
+  <div id="boardDetail" hidden><span class="board-tag" id="boardDetailCategory"></span><h3 id="boardDetailTitle" tabindex="-1"></h3><p class="board-caption" id="boardDetailMeta"></p><div id="boardDetailBody"></div><p id="boardDetailLink"></p><div class="board-actions"><button class="board-btn" id="boardList" type="button">목록</button><button class="board-btn" id="boardEdit" type="button">수정</button><button class="board-btn" id="boardDelete" type="button">삭제</button></div></div>
+ </div><p id="boardStatus" role="status" aria-live="polite"></p>
+</div>
+
                 <div class="content-head">
                     <div>
                         <span class="badge" id="badge">WEEK 02</span>
@@ -2812,12 +2864,15 @@
             let selected = 0,
                 cols = 0,
                 opener;
+            const weekTools = {"1": "생성형 AI", "2": "ChatGPT · Gemini", "3": "AI Studio · Arena", "4": "AI Studio", "5": "Gemini", "6": "Gemini", "7": "Gemini Notebook", "8": "Gemini", "9": "Cursor", "10": "Cursor", "11": "대화형 AI", "16": "전체 도구"};
+            const weekKeywords = {"1": "AI 시작 : OT", "2": "질문·조사", "3": "이미지 생성", "4": "프로그램 제작", "5": "문서·CSV", "6": "Gemini 활용", "7": "자료 기반 AI", "8": "Sheets AI 함수", "9": "Cursor 계산기", "10": "지출관리 제작", "11": "일정 가져오기", "16": "전체 복습"};
             const buttons = [];
             for (let n = 1; n <= 16; n++) {
                 const b = document.createElement('button');
                 b.className = 'week';
-                b.innerHTML = `<span class="dot">${String(n).padStart(2,'0')}</span><span class="label">${n}주차</span>`;
+                b.innerHTML = `<span class="week-tools">${weekTools[n] || "미정"}</span><span class="dot">${String(n).padStart(2,'0')}</span><span class="label">${weekKeywords[n] || `${n}주차`}</span>`;
                 b.setAttribute('aria-label', `${n}주차 상세 보기`);
+                b.title = `${n}주차 · ${weekTools[n] || "도구 미정"} · ${weekKeywords[n] || "자료 준비 중"}`;
                 b.onclick = () => render(n);
                 buttons.push(b);
                 $('nodes').append(b)
@@ -2826,11 +2881,13 @@
             function layout() {
                 const width = $('shell').getBoundingClientRect().width;
                 cols = width < 600 ? 4 : width < 1000 ? 8 : 16;
+                $('map').dataset.columns = String(cols);
                 $('nodes').style.setProperty('--cols', cols);
                 buttons.forEach((b, i) => {
                     const row = Math.floor(i / cols),
                         col = row % 2 ? cols - 1 - i % cols : i % cols;
-                    b.style.gridRow = row + 1;
+                    b.style.gridRow = `${row * 3 + 1} / span 3`;
+                    b.dataset.roadmapRow = String(row);
                     b.style.gridColumn = col + 1
                 });
                 requestAnimationFrame(drawPath)
@@ -2842,14 +2899,15 @@
                     const x = b.querySelector('.dot').getBoundingClientRect();
                     return {
                         x: x.left - r.left + x.width / 2,
-                        y: x.top - r.top + x.height / 2
+                        y: x.top - r.top + x.height / 2,
+                        row: Number(b.dataset.roadmapRow)
                     }
                 });
                 let d = `M ${pts[0].x} ${pts[0].y}`,
                     arrows = '';
                 pts.slice(1).forEach((b, i) => {
                     const a = pts[i];
-                    if (Math.abs(a.y - b.y) < 1) {
+                    if (a.row === b.row) {
                         d += ` L ${b.x} ${b.y}`;
                         const mid = (a.x + b.x) / 2,
                             dir = b.x > a.x ? 1 : -1;
@@ -2865,6 +2923,7 @@
 
             function render(n) {
                 selected = n;
+                if (window.boardReady) updateWeekBoard(n);
                 $('ai-overview').hidden = n !== 0;
                 $('weekBody').hidden = n === 0;
                 $('week6Preparation').hidden = n !== 6;
@@ -3536,5 +3595,27 @@
 })();
 </script>
 
+
+<script>
+// A week field is retained so the agreed format can later support all weeks.
+var boardActive=false,boardCurrentWeek=1,boardEditing=null,boardViewing=null;
+const boardEl=id=>document.getElementById(id),boardKey='chatgpt-course-board-pilot-v1';
+let boardPosts=[];
+try{const data=JSON.parse(localStorage.getItem(boardKey)||'[]');if(Array.isArray(data))boardPosts=data.filter(p=>p&&typeof p.id==='string'&&p.week===1&&['title','author','body','category','created'].every(k=>typeof p[k]==='string'));}catch(e){boardEl('boardStatus').textContent='저장된 글을 읽지 못했습니다. 브라우저 저장 설정을 확인하세요.';}
+function boardPersist(next){try{localStorage.setItem(boardKey,JSON.stringify(next));boardPosts=next;return true;}catch(e){boardEl('boardStatus').textContent='글을 저장하지 못했습니다. 브라우저 저장 공간과 설정을 확인하세요.';return false;}}
+function boardView(view){for(const [id,name] of [['boardListView','list'],['boardForm','form'],['boardDetail','detail']])boardEl(id).hidden=name!==view;}
+function boardDate(value){return new Date(value).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'});}
+function boardList(){boardView('list');boardEl('boardRows').replaceChildren();const q=boardEl('boardSearch').value.trim().toLocaleLowerCase();const posts=boardPosts.filter(p=>p.week===boardCurrentWeek&&[p.title,p.body,p.author].some(v=>v.toLocaleLowerCase().includes(q))).sort((a,b)=>b.created.localeCompare(a.created));boardEl('boardCount').textContent='총 '+posts.length+'개의 글';boardEl('boardEmpty').hidden=posts.length>0;boardEl('boardEmpty').textContent=q?'검색 결과가 없습니다.': '아직 등록된 글이 없습니다. 첫 실습 결과나 질문을 남겨보세요.';for(const post of posts){const row=document.createElement('tr'),title=document.createElement('td'),tag=document.createElement('span'),button=document.createElement('button');tag.className='board-tag';tag.textContent=post.category;button.type='button';button.className='board-post-title';button.textContent=post.title;button.onclick=()=>boardOpen(post.id);title.append(tag,button);row.append(title);for(const value of [post.author,boardDate(post.created)]){const cell=document.createElement('td');cell.textContent=value;row.append(cell);}boardEl('boardRows').append(row);}}
+function boardOpen(id){const post=boardPosts.find(p=>p.id===id);if(!post)return;boardViewing=id;boardView('detail');for(const [el,key]of [['boardDetailTitle','title'],['boardDetailBody','body'],['boardDetailCategory','category']])boardEl(el).textContent=post[key];boardEl('boardDetailMeta').textContent=post.author+' · '+boardDate(post.created)+(post.updated?' · 수정됨':'');boardEl('boardDetailLink').replaceChildren();try{const url=new URL(post.link);if(['https:','http:'].includes(url.protocol)){const a=document.createElement('a');a.href=url.href;a.textContent='결과물 보기 🔗';a.target='_blank';a.rel='noopener noreferrer';a.className='service-link';boardEl('boardDetailLink').append(a);}}catch(e){}boardEl('boardDetailTitle').focus();}
+function boardCompose(post){boardEditing=post?post.id:null;boardEl('boardForm').reset();for(const [el,key]of [['boardPostTitle','title'],['boardAuthor','author'],['boardBody','body'],['boardCategory','category'],['boardLink','link']])if(post)boardEl(el).value=post[key]||'';boardEl('boardFormHeading').textContent=post?'글 수정':'글쓰기';boardView('form');boardEl('boardPostTitle').focus();}
+function updateWeekBoard(n){boardCurrentWeek=n||1;boardEl('boardWeekBadge').textContent='WEEK '+String(boardCurrentWeek).padStart(2,'0')+' · BOARD';boardEl('boardHeading').textContent=boardCurrentWeek+'주차 게시판';boardEl('boardPilot').hidden=boardCurrentWeek!==1;boardEl('boardUnavailable').hidden=boardCurrentWeek===1;boardList();}
+function setBoardMode(active){boardActive=active;document.querySelector('section.content').classList.toggle('board-mode',active);boardEl('weekBoard').hidden=!active;boardEl('learningMode').setAttribute('aria-pressed',String(!active));boardEl('boardMode').setAttribute('aria-pressed',String(active));if(active){if(!selected)render(1);else updateWeekBoard(selected);}else requestAnimationFrame(layout);}
+boardEl('learningMode').onclick=()=>setBoardMode(false);boardEl('boardMode').onclick=()=>setBoardMode(true);boardEl('boardBackToLesson').onclick=()=>setBoardMode(false);boardEl('boardGoWeek1').onclick=()=>render(1);boardEl('boardWrite').onclick=()=>boardCompose();boardEl('boardSearch').oninput=boardList;boardEl('boardList').onclick=boardList;boardEl('boardCancel').onclick=()=>{if(boardEditing)boardOpen(boardEditing);else boardList();};boardEl('boardEdit').onclick=()=>boardCompose(boardPosts.find(p=>p.id===boardViewing));
+boardEl('boardForm').onsubmit=e=>{e.preventDefault();const title=boardEl('boardPostTitle').value.trim(),author=boardEl('boardAuthor').value.trim(),body=boardEl('boardBody').value.trim(),link=boardEl('boardLink').value.trim();if(!title||!author||!body){boardEl('boardStatus').textContent='제목·작성자·내용을 입력해주세요.';return;}if(link){try{if(!['https:','http:'].includes(new URL(link).protocol))throw Error();}catch(e){boardEl('boardStatus').textContent='결과물 링크는 http 또는 https 주소를 입력해주세요.';return;}}const old=boardPosts.find(p=>p.id===boardEditing),now=new Date().toISOString(),post={id:old?old.id:(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)),week:1,title,author,body,link,category:boardEl('boardCategory').value,created:old?old.created:now,...(old?{updated:now}:{})};if(boardPersist([...boardPosts.filter(p=>p.id!==post.id),post])){boardOpen(post.id);boardEl('boardStatus').textContent='이 브라우저에 저장했습니다.';}};
+boardEl('boardDelete').onclick=()=>{if(!confirm('이 글을 삭제할까요?'))return;if(boardPersist(boardPosts.filter(p=>p.id!==boardViewing))){boardList();boardEl('boardStatus').textContent='글을 삭제했습니다.';}};
+window.boardReady=true;
+// Reset returns to the learning view, as before.
+boardEl('reset').addEventListener('click',()=>setBoardMode(false));
+</script>
 </body>
 </html>
