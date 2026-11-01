@@ -168,7 +168,7 @@
 
             .nodes {
                 display: grid;
-                grid-template-columns: repeat(var(--cols, 16), 1fr);
+                grid-template-columns: repeat(var(--cols, 16), minmax(0, 1fr));
                 row-gap: 32px
             }
 
@@ -1849,7 +1849,9 @@
             .nodes { row-gap: 8px; }
             .nodes > .week {
                 display: grid;
+                grid-template-columns: minmax(0, 1fr);
                 grid-template-rows: subgrid;
+                justify-content: stretch;
                 row-gap: 8px;
                 padding-bottom: 24px;
             }
@@ -1878,7 +1880,7 @@
 
 
 .board-post-frame{min-width:0;border:1px solid var(--line);border-radius:12px;background:#fff;padding:28px 32px}.board-post-header{padding-bottom:18px;border-bottom:1px solid var(--line)}#boardDetail .board-post-header h3{margin:0 0 12px;font-size:24px;line-height:1.5}.board-post-header .board-caption{margin:0}#boardDetailBody{margin:24px 0 0;min-height:120px}.board-mirror-body>:first-child{margin-top:0}.board-mirror-body>:last-child{margin-bottom:0}@media(max-width:600px){.board-post-frame{padding:20px 16px}#boardDetail .board-post-header h3{font-size:21px}}
-#boardLogin,#boardPromptLogin,#boardLogout{display:inline-flex;align-items:center;justify-content:center;gap:8px}.github-login-logo{flex:none}
+#boardLogin,#boardPromptLogin,#boardLogout{display:inline-flex;align-items:center;justify-content:center;gap:8px}.github-login-logo{flex:none}.board-login-notice-logo{vertical-align:-3px;margin-right:3px}
 #boardToast{position:fixed;z-index:10000;top:max(20px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);box-sizing:border-box;padding:14px 20px;border:1px solid #315a48;border-radius:10px;background:#315a48;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.16);font-size:16px;line-height:1.65;overflow-wrap:anywhere;pointer-events:none}#boardToast:empty{display:none}#boardCommentsStatus:empty{display:none}.board-original-tools{margin:20px 0 8px;line-height:1.9}.board-original-tools a{display:block;width:fit-content}.board-reply-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.board-reply-button{margin-top:10px;padding:6px 12px;font-size:14px}
 .board-inline-reply{margin-top:16px;padding:18px;border:1px solid var(--line);border-radius:8px;background:#f7f9f6}.board-inline-reply label{display:grid;gap:10px;font-weight:650}.board-inline-reply textarea{width:100%;min-height:120px;resize:vertical;font-weight:400}.board-inline-reply .board-caption:empty{display:none}.board-inline-reply[hidden]{display:none}
 #boardCommentForm{display:grid;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}#boardCommentForm[hidden]{display:none}#boardCommentForm label{font-weight:650}#boardCommentBody{width:100%;min-height:120px;resize:vertical}#boardCommentForm .board-actions{margin:0}
@@ -3724,6 +3726,7 @@ function boardSearchBody(text){return boardPostType(text)==='분류 없음'?Stri
 function boardRenderPosts(){const rows=boardEl('boardRows');rows.replaceChildren();const q=boardEl('boardSearch').value.trim().toLocaleLowerCase(),scope=boardEl('boardSearchScope').value;const posts=boardPosts.filter(p=>{if(boardFilter!=='전체'&&boardPostType(p.bodyText)!==boardFilter)return false;const fields={title:p.title,body:boardSearchBody(p.bodyText),author:p.author?.login||''};return (scope==='all'?Object.values(fields):[fields[scope]||'']).some(v=>String(v).toLocaleLowerCase().includes(q));});for(const post of posts){const row=document.createElement('tr'),title=document.createElement('td'),button=document.createElement('button');button.type='button';button.className='board-post-title';button.textContent=post.title;button.onclick=()=>boardOpenPost(post.number);const tag=document.createElement('span');tag.className='board-tag';tag.textContent=boardPostType(post.bodyText);title.append(tag,button);const count=document.createElement('small');count.className='board-caption';count.textContent=' · 댓글 '+post.comments.totalCount;title.append(count);row.append(title);for(const text of [post.author?.login||'탈퇴한 사용자',boardDate(post.createdAt)]){const td=document.createElement('td');td.textContent=text;row.append(td);}rows.append(row);}const state=boardLoading?'loading':boardListError?'error':!boardUser?'login':posts.length?'ready':'empty';
 boardEl('boardEmpty').dataset.state=state;boardEl('boardEmpty').hidden=state==='ready';
 boardEl('boardEmpty').textContent=state==='loading'?'최신 글을 불러오는 중입니다…':state==='error'?boardListError:state==='login'?'GitHub에 로그인하면 이 주차의 글을 확인할 수 있습니다.':q?'불러온 글 중 검색 조건에 맞는 글이 없습니다.':boardFilter!=='전체'?'불러온 글 중 해당 분류가 없습니다.':'아직 이 주차에 등록된 글이 없습니다.';
+if(state==='login'){const logo=boardEl('boardLogin').querySelector('svg').cloneNode(true);logo.classList.add('board-login-notice-logo');boardEl('boardEmpty').prepend(logo,document.createTextNode(' '));}
 boardEl('boardListView').setAttribute('aria-busy',String(boardLoading));}
 async function boardLoadPosts(more=false){const week=boardCurrentWeek;if(!boardUsableWeek(week))return;const id=++boardListRequest;boardDetailRequest++;boardListError='';if(!more){boardPosts=[];boardCursor=null;}boardEl('boardMore').hidden=true;if(!boardSession||!boardUser){boardEl('boardRefresh').disabled=false;boardLoading=false;boardRenderPosts();boardEl('boardListStatus').textContent='';return;}boardLoading=true;boardEl('boardRefresh').disabled=true;boardEl('boardListStatus').textContent='';boardRenderPosts();try{const data=await boardApi('/api/posts?'+new URLSearchParams({week:String(week),...(more&&boardCursor?{after:boardCursor}:{})}));if(id!==boardListRequest||week!==boardCurrentWeek)return;const seen=new Set(boardPosts.map(p=>p.number));boardPosts.push(...data.nodes.filter(p=>!seen.has(p.number)));boardCursor=data.pageInfo.endCursor;boardEl('boardMore').hidden=!data.pageInfo.hasNextPage;boardEl('boardListStatus').textContent=`전체 ${data.totalCount}개 · ${boardPosts.length}개 불러옴 · GitHub 기준`;}catch(error){if(id===boardListRequest){boardListError=error.message;boardEl('boardListStatus').textContent='';}}finally{if(id===boardListRequest){boardLoading=false;boardEl('boardRefresh').disabled=false;boardRenderPosts();}}}
 function boardSafeUrl(value){try{const url=new URL(value,'https://github.com');return ['https:','http:'].includes(url.protocol)?url.href:null;}catch{return null;}}
