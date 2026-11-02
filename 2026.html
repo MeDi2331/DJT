@@ -3709,7 +3709,7 @@ function boardSetOriginal(url){const notice=boardEl('boardOriginalNotice'),tools
 let boardToastTimer=null;
 function boardShowResult(message){const toast=boardEl('boardToast');if(boardToastTimer)clearTimeout(boardToastTimer);toast.textContent=message+' 원문은 상단 안내의 ‘GitHub 원문’에서 확인하세요.';boardToastTimer=setTimeout(()=>{toast.textContent='';boardToastTimer=null;},5000);}
 function boardMessage(message){boardEl('boardStatus').textContent=message;if(!boardActive)boardEl('globalAuthFeedback').textContent=message;}
-function boardUsableWeek(week){return Number.isInteger(week)&&week>=1&&week<=12;}
+function boardUsableWeek(week){return Number.isInteger(week)&&week>=1&&week<=16;}
 function boardSyncCategories(){document.querySelectorAll('[name=boardCategoryChoice]').forEach(input=>{input.checked=input.value===boardEl('boardCategory').value;});}
 function boardFormValues(){return {title:boardEl('boardPostTitle').value,body:boardEl('boardBody').value,category:boardEl('boardCategory').value,link:boardEl('boardLink').value};}
 function boardSaveDraft(){if(!boardFormWeek||boardEl('boardForm').hidden)return;try{const drafts=boardRead(boardStoreKeys.drafts,{});drafts[boardFormWeek]=boardFormValues();boardStore(boardStoreKeys.drafts,drafts);}catch{boardMessage('이 브라우저에 임시 저장할 수 없습니다. 로그인 전에 내용을 복사해주세요.');}}
