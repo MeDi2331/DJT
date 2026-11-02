@@ -1934,6 +1934,8 @@ html[data-auth-popup="true"] body>*{display:none!important}html[data-auth-popup=
 #partsImageViewport{height:65dvh;overflow:hidden;position:relative;touch-action:none;background:#f4f5f3;cursor:grab}
 #partsImageViewport:active{cursor:grabbing}
 #partsImageFull{width:100%;height:100%;object-fit:contain;display:block;transform-origin:center;user-select:none;pointer-events:none}
+
+#partsImageViewport,#partsImageViewport *{user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
 </style>
     </head>
     <body>
@@ -3879,11 +3881,15 @@ function zoom(value){scale=Math.min(5,Math.max(1,value));if(scale===1)x=y=0;pain
 function reset(){scale=1;x=y=0;points.clear();previous=null;paint();}
 open.addEventListener('click',()=>{img.src=open.querySelector('img').src;reset();dialog.showModal();});
 document.getElementById('partsImageClose').onclick=()=>dialog.close();document.getElementById('partsImagePlus').onclick=()=>zoom(scale*1.25);document.getElementById('partsImageMinus').onclick=()=>zoom(scale/1.25);document.getElementById('partsImageReset').onclick=reset;
-dialog.addEventListener('close',()=>{points.clear();previous=null;});
+function stopMoving(){const ids=[...points.keys()];points.clear();previous=null;for(const id of ids){if(view.hasPointerCapture(id))view.releasePointerCapture(id);}}
+dialog.addEventListener('close',stopMoving);
+window.addEventListener('blur',stopMoving);
+view.addEventListener('dragstart',e=>e.preventDefault());
+view.addEventListener('selectstart',e=>e.preventDefault());
 function gesture(){const p=[...points.values()];if(!p.length)return null;return {x:p.reduce((v,a)=>v+a.x,0)/p.length,y:p.reduce((v,a)=>v+a.y,0)/p.length,d:p.length>=2?Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y):0};}
-view.addEventListener('pointerdown',e=>{points.set(e.pointerId,{x:e.clientX,y:e.clientY});view.setPointerCapture(e.pointerId);previous=gesture();});
-view.addEventListener('pointermove',e=>{if(!points.has(e.pointerId))return;points.set(e.pointerId,{x:e.clientX,y:e.clientY});const current=gesture();if(previous){if(current.d&&previous.d)scale=Math.min(5,Math.max(1,scale*current.d/previous.d));if(scale>1){x+=current.x-previous.x;y+=current.y-previous.y;}else x=y=0;paint();}previous=current;});
-for(const event of ['pointerup','pointercancel','lostpointercapture'])view.addEventListener(event,e=>{points.delete(e.pointerId);previous=gesture();});
+view.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();points.set(e.pointerId,{x:e.clientX,y:e.clientY});view.setPointerCapture(e.pointerId);previous=gesture();});
+view.addEventListener('pointermove',e=>{if(!points.has(e.pointerId))return;if(e.pointerType==='mouse'&&(e.buttons&1)===0){stopMoving();return;}e.preventDefault();points.set(e.pointerId,{x:e.clientX,y:e.clientY});const current=gesture();if(previous){if(current.d&&previous.d)scale=Math.min(5,Math.max(1,scale*current.d/previous.d));if(scale>1){x+=current.x-previous.x;y+=current.y-previous.y;}else x=y=0;paint();}previous=current;});
+for(const event of ['pointerup','pointercancel','lostpointercapture'])view.addEventListener(event,e=>{points.delete(e.pointerId);previous=gesture();if(event!=='lostpointercapture'&&view.hasPointerCapture(e.pointerId))view.releasePointerCapture(e.pointerId);});
 })();
 </script>
 </body>
